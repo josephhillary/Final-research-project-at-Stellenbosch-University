@@ -1,0 +1,74 @@
+<<<<<<< HEAD
+\chapter{Introduction \label{ch1}}
+Nonlinear partial differential equations (NLPDEs) are used in the formulation of many natural laws such as in fluid dynamics. NLPDEs have been very key to technological developments as we look for numerical approximations and simulations using computers. To be able to this, we must be able to obtain approximations to solutions or exact closed-form solutions. In order to understand NLPDEs and the systems they represent better, several methods have been proposed and are still being used to describe the state of NLPDE systems. Lie group analysis is one of those methods.
+
+Lie group analysis was inspired was the work Sophus Lie \citep{lie1891vorlesungen}  about applying Galois theory of algebraic equations to differential equations (DEs). He showed that Lie group-invariant DEs could be reduced to a simpler form that is easily solvable. Furthermore, group-invariant solutions of the equation could also be found. There are many books written on this subject such as  \citep{ovsyannikov2013lectures}, \citep{olver2000applications}, \citep{bluman2013symmetries}, \citep{ibragimov}, \citep{ibragimov2009practical} and the method has been recently extensively used in solving NLPDEs.
+
+Conservation laws, by which we mean a divergence expression vanishing on all the solutions of a system and describes invariant properties of the system, are very important in the understanding of real physical phenomena. They have applications in various mathematical sciences disciplines. Conservation laws have been used to explain the integrability of DEs and the effectiveness of numerical methods \citep{leveque1992numerical}. Recently,  conservation laws have been used to construct exact closed-form solutions of certain partial differential equations (PDEs). This needs a good understanding of conservation laws.
+
+Emmy Noether  \citep{noether1918konig} found a connection between conservation laws and symmetries for DEs that have a Lagrangian which is a function that describes the dynamics of the system. For those DEs that do not have a Lagrangian, methods which do not rely on the variational principle have been developed. Some of these methods include the multipliers approach and a conservation theorem proposed by Nail Ibragimov \citep{ibragimov2007new}.
+
+To contribute to Lie group analysis of NLPDEs, we shall in this dissertation investigate an application to a  nonlinear coupled system of Korteweg-de Vries (KdV) equations. The KdV equation describes the dynamics of solitons, and ion-acoustic waves in plamsas. We shall perform a Lie group analysis of the system, that is, finding Lie point symmetries as well as group-invariant solutions and conservation laws.
+
+The application addressed in this dissertation is an understanding of a typical KdV equation which has uses in many areas of mathematical sciences. Some of the many applications include describing the dynamics of shallow-water waves,  ion-acoustic waves in plasmas, and long internal waves in oceans.
+
+To reach our goal of contributing to Lie group analysis of PDEs, we shall in Chapter \ref{ch2} develop mathematical concepts of Lie group analysis and present some algorithms for computing conservation laws. In Chapter \ref{ch3}, we will present an illustrative example of Lie group analysis of the KdV equation. That means we find Lie point symmetries, group-invariant solutions including a one-soliton solution, and compute conservation laws using multipliers. Next, we will in Chapter \ref{ch4} investigate a system of coupled KdV equations. We find Lie point symmetries of the coupled KdV system and use them for symmetry reductions. We also compute invariant solutions. Moreover, we find conservation laws for the nonlinear coupled system of  KdV equations by using multipliers and a theorem proposed by Nail Ibragimov. We conclude the work in Chapter \ref{ch5} and suggest further work.
+=======
+\chapter{Prelude}
+Has it ever occurred to you that there exists some underlying theory that unifies a bewildering  variety of special ad-hoc techniques designed by researchers to solve certain particular seemingly, unrelated types of differential equations such as separable, homogeneous or exact equations? Well, this seems to have been  the state of the art around the middle of nineteenth century \citep{olver2000applications},\citep{arrigo2015symmetry}. 
+
+
+Incited by the impetus to extend Evariste Galois's theory on algebraic equations to differential equations, a heavy Norwegian mathematician, Marius Sophus Lie(1832-1899) \citep{lie1891vorlesungen},\citep{fritzsche1999sophus}  initiated a monumental study of continuous transformation groups, presently known as Lie groups. Lie made a profound and far reaching discovery that these special methods, were in fact, all special cases of a general integration procedure based on invariance of differential equations under a continuous group of symmetries \citep{olver2000applications}.
+% cite Galois book and Sophus lie paper
+
+Roughly speaking, a symmetry group of a system of partial differential equations is a group which transforms solutions of the system to another solution of the same system. From  a classical framework, these groups consist of geometric transformations on the space of independent and dependent variables, and act on solutions, by transforming their graphs. Typical examples are groups of translations, rotations and reflections.\citep{olver2000applications}
+%%% Insert image of showing rotation , reflection and translation
+Lie groups have had a profound impact on all areas of mathematics, both pure and applied, as well as physics, engineering and other mathematically-based sciences. The applications of Lie's continuous symmetry groups include such diverse fields as algebraic topology, differential geometry, invariant theory, birfucation theory, special functions, numerical analysis, control theory, classical mechanics, quantum mechanics, relativity, continuum mechanics, fluid mechanics, gas dynamics, combustion theory and so on. One can never overestimate Lie's contribution to modern science and mathematics.\citep{olver2000applications}
+
+For the case of ordinary differential equations, invariance under a one-parameter symmetry group implies that we can reduce the order of the equation by one, thereby recovering solutions to the original equations from those of the reduced equation by a single quadrature. This idea has been extended to reducing non-linear partial differential equations invariant under a Lie symmetry to a simpler form with fewer variables and a lower order, hence easy to solve. Precisely speaking, the reduction of a partial differential equation with respect to $\jmath$-dimensional (solvable) subalgebra of its Lie symmetry leads to reducing the number of independent variables by $\jmath$. In addition, similarity or invariant solutions of the partial differential equation can also be established.
+
+Fundamental natural laws of real world and technological problems whose formulations are non-linear ordinary and partial differential equations can be successfully treated and solved by Lie group methods, even when other methods of integration  fail the test. In fact, group analysis is the only universal and effective method for solving non-linear differential and partial equations analytically, dealing equally easily with linear and non-linear equations, as well as with constant coefficient and variable coefficients. It is therefore imperative to study Lie group analysis methods.
+
+
+For example, from the traditional point of view, the linear equation \citep{ibragimov2009practical} \begin{equation}
+\frac{ \mathrm{d}^n y}{ \mathrm{d} x^n } + a_1\frac{ \mathrm{d}^{n-1} y}{ \mathrm{d} x^{n-1} } + \ldots + a_{n-1}\frac{ \mathrm{d} y}{ \mathrm{d} x }+ a_n y =0 \label{1.0.1}
+\end{equation} with constant coefficients $ a_1, \ldots,a_n$ is different from the equation \begin{equation}
+\bar{x}^n	\frac{ \mathrm{d}^n \bar{y}}{ \mathrm{d} \bar{x}^n } + a_1 \bar{x}^{n-1}\frac{ \mathrm{d}^{n-1} \bar{y}}{ \mathrm{d} \bar{x}^{n-1} } + \ldots + a_{n-1}\bar{x}\frac{ \mathrm{d} \bar{y}}{ \mathrm{d} \bar{x} }+ a_n \bar{y} =0  \label{1.0.2}
+\end{equation} known as \textit{Euler} equation. From lie group stand point, however, the equations (\ref{1.0.1}) and (\ref{1.0.2}) are merely two different representations of the same equation with two known commuting symmetries, namely, 
+\begin{equation}
+\chi_1= \frac{\partial }{ \partial x}, \quad \chi_2= \frac{\partial }{ \partial y} \quad  \text{and} \quad \bar{\chi}_1= \frac{\partial }{ \partial \bar{x}}, \quad  \bar{\chi}_2= \frac{\partial }{ \partial \bar{y}} \label{1.0.3}
+\end{equation} for equations (\ref{1.0.1}) and (\ref{1.0.2}) respectively. These two symmetries span two similar Lie algebras and readily lead to the transformation $ x = \ln{\bar{|x|}}$, converting Euler equations to the equation with constant coefficients.
+ 
+ While engrossed in the noblest of a task to find closed form solutions of partial differential equations, one is usually interested in whether or not some quantities remain invariant in the evolution of the partial differential equation. The idea of a \textit{conservation law} which describes quantities that do not dissipate with time. Examples of such conserved quantities in physical systems  include momentum, mass, energy, angular momentum and charge. Most recent use of conservation laws  has been in investigation of existence, uniqueness and stability of non-linear partial differential equations. \citep{lax1968integrals} \citep{benjamin1972stability}
+ 
+ 
+ Conservation laws have also been applied in development and use of numerical methods \citep{eveque1992numerical},\citep{godlewski2013numerical}. The aforementioned applications emphasize the necessity to study conservation laws. To this end, there is an established intimate connection between symmetries and conservation laws. Thanks to impeccable works of Sophus Lie which inspired a strong German mathematician Ammie Emmy Noether(1882-1935) \citep{tent2008emmy}.
+ 
+ 
+This connection was unearthed by Emmy Noether and is enshrined in Noether's theorem, "Every differentiable symmetry of the action of a physical system has a corresponding conservation law." This theorem shows how each one parameter variational symmetry group gives rise to a conservation law of the Euler-Lagrange equations. For example, conservation of energy stems from invariance of the problem under a group of time translations while conservation of linear and angular momenta reflect translational and rotational invariance of the system. Noether symmetries have profound applications in the study of properties of particles moving under the influence of gravitational fields \citep{olver2000applications}.
+
+Having noted that some partial differential equations lack a Lagrangian, mathematicians have  developed symmetry  methods of deriving conservation laws that do not rely on the existence of variational principle. Some of these include the multiplier approach \cite{naz2012conservation}, \citep{bluman2010applications}
+and another method due to Ibragimov's theorem on adjoint equations of a system of partial differential equations \citep{ibragimov2009practical}.
+
+This dissertation strives to study,....
+
+Lie method is used to reduce .... and construct group invariant solutions of the system. We also derive conservation laws for the system. 
+
+This system of partial differential equations has applications in ... and finding its solutions will improve understanding of physical world processes. The solutions and conservation laws for the case of ... are derived from symmetry point of view. These results will be very important to the mathematical sciences community and the world at large since...
+
+The dissertation  is structured as follows:
+
+Chapter 2 provides a brief and succinct exposition of some concepts on Lie symmetry methods and conservation laws.
+
+Chapter 3 contains an illustration of symmetry methods in action.
+
+Chapter 4 accommodates ....system of equations.
+
+Chapter 5 highlights a summary of work done in this dissertation with mentions of future work.
+
+Bibliography is given at the end.
+% Include photos of Soplus Lie and Emmy Noether .
+
+% Reference to Peter J Olver
+
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0

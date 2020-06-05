@@ -1,0 +1,551 @@
+<<<<<<< HEAD
+\chapter{Preliminaries \label{ch2}}
+This chapter serves as a brief introduction of fundamental concepts on Lie group analysis \citep{ibragimov} and conservation laws  \cite{ibragimov2007new}. The first section of the chapter reviews the notions of local Lie groups and infinitesimal transformations, prolongations of Lie groups, group invariants, and symmetry groups. In the second section, we provide an introduction to conservation laws as well as the method of multipliers and Ibragimov's theorem for computing conservation laws. The notations fixed here will be used in the rest of the dissertation.
+\section{Lie group analysis} 
+This section introduces the basic concepts of the Lie group theory of PDEs and how one can obtain symmetries.
+\subsection{Local Lie groups}
+The setting is in Euclidean spaces $\mathbb{R}^n$ of $x=x^i$ independent variables and  $\mathbb{R}^m$ of $ u=u^{\alpha}$  dependent variables. Consider the transformations
+\begin{align}
+T_{\epsilon}: \quad \bar{x}^i = \varphi^i(x^i,u^{\alpha},\epsilon ), \quad \bar{u}^{\alpha } =\psi^{\alpha}(x^i,u^{\alpha},\epsilon), \label{tranfmtn}
+\end{align} involving  the continuous  parameter $\epsilon$ which ranges from a neighbourhood $ \mathcal{N}' \subset \mathcal{N} \subset \mathbb{R}$ of $ \epsilon=0 $ where  the functions $ \varphi^i$ and $ \psi^{\alpha}$ differentiable and analytic in the parameter $\epsilon$.
+\begin{defn} The set $\mathcal{G}$  of transformations given by  (\ref{tranfmtn}) is a local Lie group if it holds true that
+	\begin{enumerate}[(i)]
+		\item (Closure) Given \label{propty1} $T_{\epsilon_1},T_{\epsilon_2}  \in \mathcal{G}$, for $\epsilon_1,\epsilon_2 \in  \mathcal{N}' \subset \mathcal{N} $, then $T_{\epsilon_1}T_{\epsilon_2} = T_{\epsilon_3} \in \mathcal{G},\,\,  \epsilon_3= \phi( \epsilon_1,\epsilon_2) \in \mathcal{N}.$	
+		\item (Identity) There exists a unique  $  T_0 \in \mathcal{G} $ if and only if $ \epsilon=0$ such that $ T_{\epsilon}T_{0}=T_{0}T_{\epsilon}=T_{\epsilon}$.
+		\item (Inverse) There  exists a unique $T_{\epsilon^{-1}} \in \mathcal{G}$ for every transformation $ T_{\epsilon} \in \mathcal{G}, \quad \newline \text{where} \quad \epsilon \in  
+		\mathcal{N}' \subset  \mathcal{N}
+		 \quad \text{and} \quad  \epsilon^{-1} \in \mathcal{N}
+		 $ such that $ T_{\epsilon} T_{\epsilon^{-1}}=T_{\epsilon^{-1}}T_{\epsilon}=T_{0}$.
+	\end{enumerate}
+\begin{rem}
+Associativity property of the group $\mathcal{G} $  defined in (\ref{tranfmtn}) follows from (\ref{propty1}).
+\end{rem}
+\end{defn}
+\subsection{Prolongations\label{pr}}
+Since we shall be dealing with PDEs, we wish to describe how the dependant variables $u^{\alpha}$ transform. Consider the  system PDEs
+\begin{equation}
+\Delta_{\alpha}\left(x^i, u^{\alpha} , u_{(1)}, \ldots,u_{(\pi)}\right) = \Delta_{\alpha}=0. \label{pi-thorderpde}
+\end{equation} The partial derivatives $ u_{(1)}=\{ u_{i}^{\alpha}\}, u_{(2)}=\{ u_{ij}^{\alpha}\} , \ldots, u_{(\pi)}=\{ u_{i_1\ldots i_{\pi}}^{\alpha}\}$ are  of the first, second, $\ldots,$ up to the $\pi$th-orders. Denoting  \begin{equation}
+D_i = \frac{ \partial }{ \partial x^i} + u_{i}^{\alpha } \frac{ \partial }{ \partial u^{\alpha }} + u_{ij}^{\alpha } \frac{ \partial }{ \partial u_{j}^{\alpha }}+ \ldots, \label{sec2.2.2}
+\end{equation} the  total differentiation operator with respect to the variables $x^i$ and $ \delta_i^j$,  the Kronecker delta, we have
+\begin{equation} \label{sec2.2.1} D_i(x^j)= \delta_i^j,\quad 
+u_{i}^{\alpha}= D_i( u^{\alpha}), \quad u_{ij}^{\alpha}= D_{j}(D_{i}( u^{\alpha})),\ldots,
+\end{equation} where variables $u^{\alpha}_{i} $ defined in (\ref{sec2.2.1}) are named as differential variables \citep{ibragimov}. A discussion of prolonged groups and prolonged generator follows.
+\begin{enumerate}[(a)]
+ \item \textbf{Prolonged groups} \newline
+Consider the local Lie group $\mathcal{G}$ given by the transformations  \begin{align}
+\begin{aligned}
+\bar{x}^i = \varphi^i(x^i,u^{\alpha},\epsilon ), \quad \varphi^i\Big|_{\epsilon=0} = x^i,\quad 
+\bar{u}^{\alpha } = \psi^{\alpha}(x^i,u^{\alpha},\epsilon),\quad \psi^{\alpha}\Big|_{\epsilon=0} = u^{\alpha },
+\end{aligned} \label{sec2.3.1}
+\end{align} where  the symbol $\Big|_{\epsilon=0} $ means evaluated on $\epsilon=0 $.
+\begin{defn}
+The construction of  the group $\mathcal{G}$ given by (\ref{sec2.3.1}) is an equivalence of  the computation of  infinitesimal transformations
+\begin{equation} \bar{x}^i \approx x^i + \xi^i(x^i,u^{\alpha})  \epsilon, \quad \varphi^i\Big|_{\epsilon=0} = x^i,\quad \bar{u}^{\alpha } \approx u^{\alpha } + \eta^{\alpha} (x^i,u^{\alpha}) \epsilon,\quad \psi^{\alpha}\Big|_{\epsilon=0} = u^{\alpha }, \label{sec2.3.2}
+\end{equation} obtained from (\ref{tranfmtn}) by a Taylor series expansion of  $ \varphi^i(x^i,u^{\alpha},\epsilon )$ and $ \psi^i(x^i,u^{\alpha},\epsilon )$ in $ \epsilon $ about $ \epsilon =0$ and keeping only the terms linear in $ \epsilon$, 
+where \begin{equation} 
+\xi^i(x^i,u^{\alpha}) = \frac{ \partial \varphi^i( x^i,u^{\alpha},\epsilon)}{ \partial \epsilon }\Big|_{\epsilon =0}, \quad  \eta^{\alpha}(x^i,u^{\alpha}) = \frac{ \partial \psi^{\alpha}( x^i,u^{\alpha},\epsilon)}{ \partial \epsilon }\Big|_{\epsilon =0}. \label{sec2.3.4}
+\end{equation}
+\end{defn}
+\begin{rem}The symbol of infinitesimal transformations, $X$, is used to write (\ref{sec2.3.2}) as \begin{equation}
+	\bar{x}^i \approx (1+X)x^i, \quad \bar{u}^{\alpha } \approx (1+X)u^{\alpha},\label{sec2.3.5}
+	\end{equation} where  \begin{equation}
+	X =  \xi^i(x^i,u^{\alpha}) \frac{ \partial }{ \partial x^i} + \eta^{\alpha}(x^i,u^{\alpha})  \frac{ \partial }{ \partial u^{\alpha }},	\label{sec2.3.6}
+	\end{equation} is the generator  of the group $\mathcal{G}$ given by (\ref{sec2.3.1}).
+\end{rem}
+
+\begin{rem}
+To obtain transformed derivatives from (\ref{tranfmtn}), we  use a change of variable formulae \begin{equation} D_i = D_i( \varphi^j) \bar{D}_j,
+\label{sec2.3.7}
+\end{equation} where $\bar{D}_j $ is the total differentiation in the  variables $ \bar{x}^i$. This means that \begin{equation} 
+\bar{u}^{\alpha}_i =\bar{D}_i( \bar{u}^{\alpha}) , \quad \bar{u}^{\alpha}_{ij} = \bar{D}_j( \bar{u}^{\alpha}_i)= \bar{D}_i( \bar{u}^{\alpha}_j). \label{sec2.3.8}
+\end{equation}
+If we apply the change of variable formula given in (\ref{sec2.3.7}) on  $\mathcal{G}$ given by (\ref{sec2.3.1}), we get
+\begin{equation} D_i( \psi^{\alpha}) = D_i( \varphi^j)\bar{D}_j ( \bar{u}^{\alpha} ) = \bar{u}^{\alpha}_j D_i( \varphi^j).
+\label{sec2.3.9}
+\end{equation}  Expansion of (\ref{sec2.3.9}) yields \begin{equation} \left( 
+\frac{\partial \varphi^j}{\partial x^i}+ u_i^{\beta} \frac{\partial \varphi^j}{\partial u^{\beta}} \right) \bar{u}_j^{\beta} = \frac{\partial \psi^{\alpha}}{\partial x^i} + u_i^{\beta}  \frac{\partial \psi^{\alpha}}{\partial u^{\beta}}. \label{sec2.10.1}
+\end{equation}	
+The variables $ \bar{u}_i^{\alpha}$  can be written  as  functions of  $ x^i,u^{\alpha}, u_{(1)}$, that is
+\begin{equation} \bar{u}_i^{\alpha} = \Phi^{\alpha}(x^i,u^{\alpha}, u_{(1)}, \epsilon), \quad \Phi^{\alpha}\Big|_{\epsilon =0} = u^{\alpha}_i. \label{sec2.3.11}
+\end{equation}
+\end{rem}
+\begin{defn} \label{defproG}
+The transformations in  the space of the  variables $ x^i,u^{\alpha}, u_{(1)} $ given in (\ref{sec2.3.1}) and (\ref{sec2.3.11}) form the first prolongation group $\mathcal{G}^{[1]}$.
+\end{defn}
+\begin{defn} Infinitesimal transformation of the first derivatives  is  \begin{equation}
+\bar{u}_i^{\alpha} \approx  u_i^{\alpha} +  \zeta_i^{\alpha}\epsilon, \label{sec2.3.122}
+\end{equation} where $ \zeta_i^{\alpha}=\zeta_i^{\alpha}(x^i,u^{\alpha},u_{(1)},\epsilon).$
+\end{defn}
+\begin{rem} In terms of infinitesimal transformations, the  first prolongation group $ \mathcal{G}^{[1]}$ is given  by (\ref{sec2.3.2}) and (\ref{sec2.3.122}).
+\end{rem}
+ \item \textbf{Prolonged generators} \newline
+  A  description of how to extend a group generator is given.
+\begin{defn}
+By using the relation given in (\ref{sec2.3.9}) on the first prolongation group $ \mathcal{G}^{[1]}$  given by Definition \ref{defproG}, we obtain \citep{ibragimov2009practical}
+
+\begin{align}
+\label{p3} D_i( x^j +  \xi^j \epsilon)( u_j^{\alpha} +  \zeta_j^{\alpha}\epsilon )   =& D_i( u^{\alpha } +  \eta^{\alpha} \epsilon ), 
+\end{align} 
+which gives
+\begin{align}
+\label{p5} u^{\alpha}_i + \zeta_j^{\alpha} \epsilon+  u_j^{\alpha} \epsilon D_i \xi^j   =&  u^{\alpha }_i + D_i \eta^{\alpha} \epsilon ,
+\end{align} 
+and thus 
+\begin{align}
+\label{p44} \zeta_i^{\alpha} =& D_i(\eta^{\alpha}  )- u_j^{\alpha}  D_i (\xi^j),
+\end{align}
+is  the first prolongation formula.
+\end{defn}
+\begin{rem}
+Similarly, we get  higher order prolongations \citep{ibragimov}, 
+\begin{align}
+\begin{aligned}
+\zeta_{ij}^{\alpha} &= D_j(\zeta_i^{\alpha}  )- u_{i\kappa}^{\alpha}  D_j (\xi^{\kappa}),\\
+\vdots  \\
+\zeta_{i_1,\ldots,i_\kappa}^{\alpha} & = D_{i_\kappa}( \zeta_{i_1,\ldots,i_{\kappa-1}}^{\alpha} )- u_{i_1,i_2,\ldots, i_{\kappa-1}j}^{\alpha}  D_{i_\kappa} (\xi^{j}).
+\end{aligned} \label{sec2.4.2}
+\end{align}
+\end{rem}
+ \begin{rem}The  prolonged generators of the prolongations $ \mathcal{G}^{[1]},\ldots,  \mathcal{G}^{[\kappa]}$ of the group $\mathcal{G}$  are  
+ 	\begin{align} \begin{aligned}
+ 	X^{[1]} =& X + \zeta_i^{\alpha} \frac{ \partial }{ \partial u_i^{\alpha}},\\
+ 	\vdots \\
+ 	X^{[\kappa]} = &X^{[\kappa-1]} + \zeta_{i_1,\ldots,i_\kappa}^{\alpha} \frac{ \partial }{ \partial \zeta_{i_1,\ldots,i_\kappa}^{\alpha}}, \,\, \kappa \geq 1,
+ 	\end{aligned} \label{sec2.4.3}
+ 	\end{align} where $X$ is the group generator given by (\ref{sec2.3.6}).\end{rem}
+\end{enumerate}
+\subsection{ Group invariants}
+This subsection  presents some basic definitions and a  theorem that are very important in Lie group analysis.
+\begin{defn} A function $ \Gamma(x^i,u^{\alpha}) $ is called an invariant of  the group $\mathcal{G}$ of transformations given by (\ref{tranfmtn}) if 
+	\begin{equation}
+	\Gamma( \bar{x}^i,\bar{u}^{\alpha}) = \Gamma(x^i,u^{\alpha}). \label{sec2.6.1}
+	\end{equation}  \end{defn}
+\begin{thm} A function $\Gamma(x^i,u^{\alpha})$ is  an invariant of the group $\mathcal{G}$  given by (\ref{tranfmtn}) if and only if it solves the following first-order linear PDE: \citep{ibragimov} \begin{equation} X \Gamma = \xi^i(x^i,u^{\alpha}) \frac{ \partial \Gamma  }{ \partial x^i} + \eta^{\alpha}(x^i,u^{\alpha})  \frac{ \partial \Gamma }{ \partial u^{\alpha }} =0.\label{eqthr}
+	\end{equation} \label{sec2.6.2}
+\end{thm}
+From Theorem (\ref{sec2.6.2}), we have the following result.
+\begin{thm}
+ The local Lie  group $\mathcal{G}$ of transformations in  $\mathbb{R}^n$ given by  (\ref{tranfmtn}) \citep{ibragimov2009practical} has  precisely $ n-1$ functionally independent invariants. One can take, as the basic invariants, the left-hand sides of the first integrals  \begin{equation}
+	\psi_1(x^i,u^{\alpha})=c_1, \ldots,\psi_{n-1}(x^i,u^{\alpha}) = c_{n-1}, \label{sec2.6.3}
+	\end{equation} of the characteristic equations for (\ref{eqthr}):
+	\begin{equation}\frac{ \mathrm{d}x^i}{ \xi^i(x^i,u^{\alpha})}= \frac{ \mathrm{d}u^{\alpha}}{ \eta^{\alpha}(x^i,u^{\alpha})}. \label{sec2.6.4}
+	\end{equation} \label{thm17}	
+\end{thm}
+\subsection{Symmetry groups }
+This subsection presents some vital definitions on Lie groups of PDEs.  
+\begin{defn} The vector field $X$ (\ref{sec2.3.6}) is  a Lie point symmetry of the  PDE system given in (\ref{pi-thorderpde}) if the  determining equations  
+	\begin{equation}
+	X^{[\pi]} \Delta_{ \alpha } \Big|_{ \Delta_{ \alpha }=0 } = 0, \quad \alpha=1,\ldots,m, \quad \pi \geq 1, \label{sec2.5.2}
+	\end{equation} are satisfied, where  $\Big |_{\Delta_{ \alpha }=0}$ means evaluated on  $ \Delta_{\alpha} =0$ and $ 	X^{[\pi]}$ is the $\pi$-th prolongation of $X$.
+\end{defn}
+\begin{defn}The Lie group $\mathcal{G}$  is a symmetry group of the PDE system given in  (\ref{pi-thorderpde}) if the PDE system  (\ref{pi-thorderpde}) is  form-invariant, that is
+	\begin{equation} \Delta_{\alpha} \left( \bar{x}^i, \bar{u}^{\alpha} , \bar{u}_{(1)}, \ldots, \bar{u}_{(\pi)}\right) =0. 
+	\label{sec2.5.3}
+	\end{equation}	
+\end{defn}
+\begin{thm} Given the infinitesimal  transformations in (\ref{sec2.3.1}), the Lie group  $\mathcal{G}$ in (\ref{tranfmtn}) is found by integrating the Lie equations
+	\begin{align}
+	\frac{ \mathrm{d} \bar{x}^i}{ \mathrm{d} \epsilon } = \xi^i(\bar{x}^i, \bar{u}^{\alpha}), \quad  \bar{x}^i\Big|_{\epsilon=0} = x^i,\quad
+	\frac{ \mathrm{d}  \bar{u}^{\alpha} }{ \mathrm{d} \epsilon } = \eta^{\alpha}(\bar{x}^i, \bar{u}^{\alpha} ), \quad \bar{u}^{\alpha} \Big|_{ \epsilon=0} = u^{\alpha}.
+	\end{align} \label{lieeqns}	
+\end{thm}
+\subsection{Lie algebras}
+We use this subsection to define a Lie algebra of operators.
+\begin{defn}   A vector space $ \mathcal{V}_{r}$ of operators \citep{ibragimov}  $X$ (\ref{sec2.3.6}) is  a Lie algebra if for any two operators, $X_i, X_j \in  \mathcal{V}_r$ , their commutator  \begin{equation} [X_i,X_j ]= X_iX_j-X_jX_i,\label{sec2.7.2} \end{equation} is in $ \mathcal{V}_r$  for all  $ i,j=1,\ldots,r$.
+\end{defn}
+\begin{rem}
+The commutator satisfies the properties of bilinearity,  skew symmetry and  the Jacobi identity \citep{ibragimov}.	
+\end{rem}
+=======
+\chapter{Groundwork for symmetr analysis and conservation laws}
+This chapter is an exposition of fundamental concepts on  the theory of continuous groups, symmetry properties of partial  differential equations, conservation laws and exact solutions;  most of which  are adapted from \cite{ibragimov2009practical},\cite{bluman2013symmetries},\cite{bluman2008symmetry},\cite{olver2000applications},\cite{ovsyannikov2013lectures} \citep{arrigo2015symmetry}.
+%% add books by IbrAGIMOV 
+\section{One parameter groups of continuous transformations}
+We consider $n$ independent variables $ x= ( x^1, \ldots, x^n ) $  with co-ordinates $ x^i$ and   $m$ dependent variables $ u= ( u^1, \ldots, u^m ) $ with co-ordinates $ u^{\alpha}$. Let $ T_{\epsilon}$ be the transformation:
+\begin{equation}
+T_{\epsilon}:\bar{x}^i = \varphi^i(x,u,\epsilon ), \quad \bar{u}^{\alpha } =\psi^{\alpha}(x,u,\epsilon) \label{2.1.1}
+\end{equation} involving  a continuous real valued parameter $\epsilon$ in a neighbourhood $ D' \subset D \subset \mathbb{R}$ of $ \epsilon=0 $ for   $ \varphi^i$ and $ \psi^{\alpha}$ smooth functions of the variables $x^i$ and $u^{\alpha}$ and analytic in $\epsilon$.
+\begin{defn} The set $\mathcal{G}$  of transformations (\ref{2.1.1}) is called a continuous one parameter local lie group of transformations in the space of variables $x$ and $u$ if:
+	\begin{enumerate}[(i)]
+		\item For $T_{\epsilon_1},T_{\epsilon_2}  \in \mathcal{G}$, where $\epsilon_1,\epsilon_2 \in  D' \subset D $, then $T_{\epsilon_1}T_{\epsilon_2} = T_{\epsilon_3} \in \mathcal{G}, \epsilon_3= \phi( \epsilon_1,\epsilon_2)$	(Closure)	
+		\item $  T_0 \in \mathcal{G} $ if and only if $ \epsilon=0$ such that $ T_{\epsilon}T_{0}=T_{0}T_{\epsilon}=T_{\epsilon}$(Identity)
+		\item For $ T_{\epsilon} \in \mathcal{G}, \epsilon\in  D' \subset D$, there exists a unique $ T_{\epsilon^{-1}} \in \mathcal{G}, \epsilon^{-1} \in D $
+		such that $ T_{\epsilon} T_{\epsilon^{-1}} =T_{\epsilon^{-1}}T_{\epsilon}=T_{0}$(Inverse)
+	\end{enumerate}
+
+\begin{rem}
+ Associativity property of the group $\mathcal{G} $ follows from (i). \label{2.1}
+\end{rem}
+\end{defn}
+\section{Prolongations}
+One of our major interests is to  describe how the derivatives of $u^{\alpha}$ transform. The  operator for total differentiation, $D_i$ is defined as
+\begin{equation}
+D_i = \frac{ \partial }{ \partial x^i} + u_{i}^{\alpha } \frac{ \partial }{ \partial u^{\alpha }} + u_{ij}^{\alpha } \frac{ \partial }{ \partial u_{j}^{\alpha }}+ \ldots \quad i,j = 1, \ldots, n, \quad \alpha=1, \ldots, m. \label{2.2.2}
+\end{equation}
+The following derivatives of $x$ and $u$ are written as \begin{equation} \label{2.2.1} D_i(x^j)= \delta_i^j,\quad 
+u_{i}^{\alpha}= D_i( u^{\alpha}), \quad u_{ij}^{\alpha}= D_{j}(D_{i}( u^{\alpha})), \quad \ldots 
+\end{equation} where $ \delta_i^j$ is the Kronecker delta symbol, that is,
+\begin{align}
+	\delta_i^j = \begin{cases} 1,\quad  \text{if} \quad i=j\\ 0 \quad \text{if} \quad i \neq j
+	\end{cases}
+\end{align}
+The collection of all first derivatives $ u_i^{\alpha}$ is denoted by $ u_{(1)} $, namely, \begin{equation}
+u_{(1)} = \{ u_i^{\alpha}  \}, \quad \alpha = 1, \ldots, m, \quad i =1, \ldots, n
+\end{equation}
+The second and higher derivatives  up to $ \pi$th-order derivative are denoted analogously, namely, \begin{equation}
+ u_{(2)}=  \{ u_{ij}^{\alpha}  \}, \ldots, u_{(\pi)} = \{ u_{i_1, \ldots i_\pi}^{\alpha}  \}
+\end{equation}
+
+
+\begin{rem}
+We want all the variables $ x, u , u_{(1)}, \ldots $ to be functionally independent and connected only by the differential  relations (\ref{2.2.1})  \citep{ibragimov1999elementary}.
+
+The  variables $u^{\alpha}_{i} $ are called \textbf{differential variables.}
+
+The variables  $ u_{ij}, \ldots $ are assumed to be symmetric in subscripts, that is $u_{ij} = u_{ji}, \ldots$
+\end{rem}
+\subsection{ Prolonged groups}
+Let $ z= (x,u)$ and one parameter group of transformations $\mathcal{G}$  be \begin{align}
+\begin{aligned}
+\bar{x}^i = \varphi^i(x,u,\epsilon ), \quad \varphi^i|_{\epsilon=0} = x^i, \quad i =1,\ldots,n\\
+\bar{u}^{\alpha } =\psi^{\alpha}(x,u,\epsilon),\quad \psi^{\alpha}|_{\epsilon=0} = u^{\alpha }, \quad \alpha =1,\ldots,m
+\end{aligned} \label{2.3.1}
+\end{align} where the symbol $|_{\epsilon=0} $ means evaluated on $\epsilon=0 $.
+
+According to Lie's theory, the construction of the group $\mathcal{G}$ is the same as determination of corresponding infinitesimal transformations:
+\begin{equation} \bar{x}^i \approx x^i + \epsilon \xi^i(x,u), \quad \bar{u}^{\alpha } \approx u^{\alpha } + \epsilon  \eta^{\alpha} ( x,u) \label{2.3.2}
+\end{equation} obtained from (\ref{2.1.1}) by Taylor series expansion of the functions $ \varphi^i(x,u,\epsilon )$ and $ \psi^i(x,u,\epsilon )$ in $ \epsilon $ about $ \epsilon =0$ while taking into account the initial conditions \begin{equation}
+\varphi^i|_{\epsilon=0} = x^i, \quad \psi^{\alpha}|_{\epsilon=0} = u^{\alpha } \label{2.3.3}
+\end{equation} and keeping only the terms linear in $ \epsilon$. As a result, we have \begin{equation} 
+\xi^i(x,u) = \frac{ \partial \varphi^i( x,u,\epsilon)}{ \partial \epsilon }|_{\epsilon =0}, \quad  \eta^{\alpha}(x,u) = \frac{ \partial \psi^{\alpha}( x,u,\epsilon)}{ \partial \epsilon }|_{\epsilon =0} \label{2.3.4}
+\end{equation}
+We use a \textit{symbol} $ X$  of infinitesimal transformations  to write (\ref{2.3.2}) as \begin{equation}
+\bar{x}^i \approx (1+X)x, \quad \bar{u}^{\alpha } \approx (1+X)u\label{2.3.5}
+\end{equation} where the differential operator \begin{equation}
+X =  \xi^i(x,u) \frac{ \partial }{ \partial x^i} + \eta^{\alpha}(x,u)  \frac{ \partial }{ \partial u^{\alpha }} 	\label{2.3.6}
+\end{equation} is known as the \textbf{infinitesimal operator or generator }of the group $\mathcal{G}$. We say that $X$ is an \textit{admitted operator} or an \textit{infinitesimal symmetry} of equation(\ref{2.2.4}) if the group $\mathcal{G}$ is admitted by equation (\ref{2.2.4}).
+ Transformed derivatives are obtained from (\ref{2.1.1}) by use of  change of variable formulae \begin{equation} D_i = D_i( \varphi^j) \bar{D}_j
+\label{2.3.7}
+\end{equation} where $\bar{D}_j $ is the total differentiation in transformed variables $ \bar{x}^i$. This means that \begin{equation} 
+\bar{u}^{\alpha}_i =\bar{D}_i( \bar{u}^{\alpha}) , \quad \bar{u}^{\alpha}_{ij} = \bar{D}_j( \bar{u}^{\alpha}_i)= \bar{D}_i( \bar{u}^{\alpha}_j) \label{2.3.8}
+\end{equation}
+By applying (\ref{2.3.7}) on the group $G$ (\ref{2.3.1}), we have 
+\begin{equation} D_i( \psi^{\alpha}) = D_i( \varphi^j)\bar{D}_j ( \bar{u}^{\alpha} ) = \bar{u}^{\alpha}_j D_i( \varphi^j)
+\label{2.3.9}
+\end{equation}  or \begin{equation} \left( 
+\frac{\partial \varphi^j}{\partial x^i}+ u_i^{\beta} \frac{\partial \varphi^j}{\partial u^{\beta}} \right) \bar{u}_j^{\beta} = \frac{\partial \psi^{\alpha}}{\partial x^i} + u_i^{\beta}  \frac{\partial \psi^{\alpha}}{\partial u^{\beta}} \quad i,j = 1,\ldots,n, \quad \alpha,\beta =1,\ldots,m. \label{2.10.1}
+\end{equation}
+
+One  can represent the quantities $ \bar{u}_i^{\alpha}$ as functions of $ x, u, u_{(1)}$, that is, 
+\begin{equation} \bar{u}_i^{\alpha} = \Phi^{\alpha}(x,u, u_{(1)}, \epsilon), \quad \Phi^{\alpha}|_{\epsilon =0} = u^{\alpha}_i \label{2.3.11}
+\end{equation}
+The transformations in the space of variables $ x,u, u_{(1)} $ given by (\ref{2.3.1}) and (\ref{2.3.11}) form a one-parameter group called the \textit{first prolongation} or \textit{extension} of the group $\mathcal{G}$ denoted by $\mathcal{G}^{[1]}$.
+
+The infinitesimal transformation of the first derivatives $ u_i^{\alpha}$ is given as \begin{equation}
+\bar{u}_i^{\alpha} \approx  u_i^{\alpha} + \epsilon \zeta_i^{\alpha}  \label{2.3.12}
+\end{equation} so that the first prolongation group $ \mathcal{G}^{[1]}$ is (\ref{2.3.2}) and (\ref{2.3.12}). Higher-order prolongations of $\mathcal{G}$ , namely, $\mathcal{G}^{[2]}, \mathcal{G}^{[3]},
+\ldots$ can be obtained  analogously by taking successive derivatives of (\ref{2.3.9}).
+\subsection{Prolonged generators}
+By using (\ref{2.3.9}) on the  group $ \mathcal{G}^{[1]}$, we obtain 
+\begin{align}
+\begin{aligned}
+D_i( \varphi^j)( \bar{u}^{\alpha}_j )& =   D_i( \psi^{\alpha})\\
+D_i( x^j + \epsilon \xi^j )( u_j^{\alpha} + \epsilon \zeta_j^{\alpha} )& =   D_i( u^{\alpha } + \epsilon  \eta^{\alpha} ) \\
+(\delta^i_j + \epsilon D_i\xi^j )( u_j^{\alpha} + \epsilon \zeta_j^{\alpha} ) &=  u^{\alpha }_i + \epsilon D_i \eta^{\alpha} \\
+u^{\alpha}_i +\epsilon \zeta_j^{\alpha} + \epsilon u_j^{\alpha}  D_i \xi^j  &=  u^{\alpha }_i + \epsilon D_i \eta^{\alpha} \\
+\zeta_i^{\alpha}&= D_i(\eta^{\alpha}  )- u_j^{\alpha}  D_i (\xi^j) \quad \text{(sum on $j$)},\quad i,j =1,\ldots,n
+\end{aligned} \label{2.4.1}
+\end{align}
+The last term of (\ref{2.4.1}) is called the \textit{first prolongation formula}. Analogously \citep{ibragimov1999elementary}, one can recursively have 
+\begin{align}
+\begin{aligned}
+\zeta_{ij}^{\alpha} &= D_j(\zeta_i^{\alpha}  )- u_{i\kappa}^{\alpha}  D_j (\xi^{\kappa}) \quad   (\text{sum on $ \kappa$})\\
+\vdots  \\
+\zeta_{i_1,\ldots,i_\kappa}^{\alpha} & = D_{i_\kappa}( \zeta_{i_1,\ldots,i_{\kappa-1}}^{\alpha} )- u_{i_1,i_2,\ldots, i_{\kappa-1}j}^{\alpha}  D_{i_\kappa} (\xi^{j}) \quad   (\text{sum on  $j$})
+\end{aligned} \label{2.4.2}
+\end{align}
+The prolongations of the group $\mathcal{G}$ form a group denoted by $ \mathcal{G}^{[1]},\ldots,  \mathcal{G}^{[\kappa]}$. 
+The corresponding prolonged generators are 
+\begin{align} \begin{aligned}
+X^{[1]} =& X + \zeta_i^{\alpha} \frac{ \partial }{ \partial u^i_{\alpha}} \quad (\text{sum on $ i, \alpha $ } ) \\
+\vdots \\
+X^{[\kappa]} = &X^{[\kappa-1]} + \zeta_{i_1,\ldots,i_\kappa}^{\alpha} \frac{ \partial }{ \partial \zeta_{i_1,\ldots,i_\kappa}^{\alpha}} \quad \kappa \geq 1
+\end{aligned} \label{2.4.3}
+\end{align}, where $X$ is as given in (\ref{2.3.6}).
+
+\section{ Group invariants}
+We define invariance and mention  a key theorem on necessary and sufficient condition for invariance of a function.
+\begin{defn} A function $ \Gamma(x,u) $ is said to be an \textit{invariant }of the group  $\mathcal{G}$ (\ref{2.1.1}), if 
+	\begin{equation}
+	\Gamma( \bar{x},\bar{u} ) \equiv \Gamma ( \varphi^i(x,u,\epsilon), \psi^{\alpha}(x,u,\epsilon))= \Gamma(x,u) \label{2.6.1}
+	\end{equation} identically in $ x, u$ and $ \epsilon$.
+\end{defn}
+
+
+\begin{thm} A necessary and sufficient condition for a  function $\Gamma(x,u)$ to be an invariant under the symmetry $X$(\ref{2.3.5}) is that, \begin{equation} X \Gamma = \xi^i(x,u) \frac{ \partial \Gamma  }{ \partial x^i} + \eta^{\alpha}(x,u)  \frac{ \partial \Gamma }{ \partial u^{\alpha }} =0,\quad i = 1,  \ldots, n, \quad \alpha = 1,  \ldots, m 
+	\end{equation} \label{2.6.2}
+\end{thm}
+\begin{rem}
+	It follows from theorem (\ref{2.6.2}), that every one parameter group of point transformations (\ref{2.1.1}) has $ n-1$ functionally independent invariants, which can be taken as the left-hand side of any first integrals \begin{equation}
+	J_1(x,u)=C_1, \ldots, J_{n-1}(x,u) = C_{n-1} \label{2.6.3}
+	\end{equation} of the characteristic equations 
+	\begin{equation}\frac{ \mathrm{d}x^1}{ \xi^1(x,u)}= \ldots= \frac{ \mathrm{d}x^n}{ \xi^n(x,u)}= \frac{ \mathrm{d}u^1}{ \eta^1(x,u)}=\ldots = \frac{ \mathrm{d}u^m}{ \eta^m(x,u)}. \label{2.6.4}
+	\end{equation}	
+\end{rem}
+
+
+
+\section{Symmetry groups of  partial differential equations}
+Here we present some vital definitions on Lie groups admitted by partial differential equations. 
+
+\begin{rem}The definitions of one-parameter groups and symmetry groups of partial differential equations can be extended from those of differential equations \citep*{ibragimov2009practical}.
+\end{rem} 
+We shall consider a system of  $ \pi$th-order partial differential equations, namely,
+\begin{equation}
+E_{\alpha}( x, u , u_{(1)}, \ldots,u_{(\pi)}) =0, \quad \alpha = 1,  \ldots, m. \label{2.2.4}
+\end{equation}
+
+\begin{defn} We say that the vector field $X$ (\ref{2.3.6}) is  a \textbf{point symmetry} of equation ( \ref{2.2.4}) if the determining equation (\ref{2.5.2}) is satisfied
+	\begin{equation}
+	X^{[\pi]} \left(  E_{ \alpha } \textbar_{ E_{ \alpha }=0 } \right)= 0, \quad \alpha=1,\ldots,m \label{2.5.2}
+	\end{equation}	where the symbol $\textbar_{E_{ \alpha }=0}$ means evaluated on the equation $ E_{\alpha} =0$.
+\end{defn}
+\begin{rem}We refer to  equation (\ref{2.5.2}) as  the \textbf{determining equation} of equation (\ref{2.2.4}) because it determines all infinitesimal symmetries of equation (\ref{2.2.4}).
+\end{rem}
+
+\begin{defn}We shall to refer to a  one-parameter group $\mathcal{G}$ of transformations as a \textbf{symmetry group} of equation (\ref{2.2.4}) if equation (\ref{2.2.4}) is form-invariant in the new variables $ \bar{x}$ and $ \bar{u}$, namely,
+	\begin{equation} E_{\alpha}( \bar{x}, \bar{u} , \bar{u}_{(1)}, \ldots, \bar{u}_{(\pi)})=0 
+	\label{2.5.3}
+	\end{equation} for the function $ E_{\alpha}$  same as in equation (\ref{2.2.4}).	
+\end{defn}
+\begin{thm} If we have the infinitesimal  transformation (\ref{2.3.1})  or its symbol $X$, then the corresponding one-parameter local lie group  $\mathcal{G}$ is obtained by integrating the \textbf{Lie equations }
+	\begin{align}
+	\begin{aligned}
+	\frac{ \mathrm{d} \bar{x}^i}{ \mathrm{d} \epsilon } = \xi^i(\bar{x}, \bar{u} ), \quad  \bar{x}^i|_{\epsilon=0} = x,\\
+	\frac{ \mathrm{d}  \bar{u}^{\alpha} }{ \mathrm{d} \epsilon } = \eta^{\alpha}(\bar{x}, \bar{u} ), \quad \bar{u}^{\alpha} |_{ \epsilon=0} = u
+	\end{aligned}
+	\end{align} 	
+\end{thm}
+
+
+
+
+
+\section{Lie algebras}
+This section is dedicated to definitions involving Lie algebra of operators. 
+\begin{defn} A vector space $ \mathcal{V}_{r}$ of operators \citep{ibragimov1999elementary}  $X$ (\ref{2.3.6}) is said to be a \textbf{Lie algebra} if for any two operators, $X_i, X_j \in  \mathcal{V}_r$ , then the \textbf{commutator} $[X_i,X_j ]$ defined as, \begin{equation} [X_i,X_j ]= X_iX_j-X_jX_i, \label{2.7.2}\end{equation} is also in $ \mathcal{V}_r$  for $ i,j=1,\ldots,r$.
+\end{defn}
+\begin{rem}
+It follows  from definition (\ref{2.7.2}) that the commutator is bilinear, skew-symmetric and satisfies the Jacobi identity.	
+\end{rem}
+
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0
+\begin{thm}
+The set of  solutions of the  determining equation given by  (\ref{sec2.5.2}) forms a Lie algebra\citep{ibragimov}. 
+\end{thm}
+<<<<<<< HEAD
+\section{Conservation laws}
+This section serves as an introduction to conservation laws and the algorithms used to find them, that is, the method of multipliers and Ibragimov's conservation theorem. We will use these methods in the next part of the dissertation.
+\subsection{Fundamental operators}
+Let a system of $\pi$th-order PDEs be given by (\ref{pi-thorderpde}).
+\begin{defn} The Euler-Lagrange operator ${\delta}/{\delta u^{\alpha}}$ is 
+=======
+\begin{rem}
+One can always define subalgebra and ideal for lie algebras as in done for groups.
+\end{rem}
+\section{Exact solutions of non-linear partial differential equations}
+A quick flavour of some three methods for obtaining  exact solutions of partial differential equations is given.
+\subsection{(G'/G)-expansion method }
+%% wang etal[8]
+\citep{wang2008g}
+The function $G$ satisfies a second order linear ordinary differential equation with constant coefficients. The method presents travelling wave solutions expressible as trigonometric, rational or hyperbolic functions. Consider a non linear partial differential equation of the form
+ \begin{equation}
+E_{1}(u,u_{t}, u_{x}, u_{tt},u_{xx} \ldots) =0,  \label{2.8.1}
+\end{equation} The equation(\ref{2.8.1}) is first transformed into a non linear ODE through the substitution
+\begin{equation}
+u(t,x) = \nu(\varPhi), \quad \varPhi = x- \rho t, \label{2.8.2}
+\end{equation} where $\rho$ is a constant, which yields
+\begin{equation} E_{1}(\nu,-\rho \nu', \nu',\rho^2\nu'', -\rho \nu'',\nu'' \ldots) =0,  \label{2.8.3}
+\end{equation}
+Then assuming that travelling wave solutions of \ref{2.8.3} can be expressed as a polynomial in $\frac{ G'(\varPhi)}{G(\varPhi)} $ \begin{equation} \nu(\varPhi) = \sum_{i=0}^{m} \mathcal{A}_i \left( \frac{ G'(\varPhi)}{G(\varPhi)}\right)^i  \label{2.8.4} 
+\end{equation} where $ \mathcal{A}_0, \ldots, \mathcal{A}_m$ are to be determined. Determination of  $m$ involves considering the homogeneous balance between the highest derivatives and non-linear terms appearing equation (\ref{2.8.3}). In  equation \ref{2.8.4}, $ G(\varPhi)$ satisfies the second order  linear homogeneous ordinary differential equation \begin{equation} G''(\varPhi) + \lambda G'(\varPhi) + \mu G(\varPhi) =0 \label{2.8.5}
+\end{equation} for some arbitrary contants $ \lambda$ and $\mu$.
+\begin{rem}
+The substitution of $\nu(\varPhi)$ from equations (\ref{2.8.4}) and (\ref{2.8.5}) into equation (\ref{2.8.3}) yields a polynomial in $(G'/G)^i$, whose coefficients are equated to zero and the resultant system of algebraic equations solved for the values of $A_i$.
+\end{rem}
+\subsection{Extended Jacobi elliptic function expansion method}
+% Give a brief history of the method, who brought it
+%[28-31]
+
+The steps involved in this technique are explained below \citep{hong2013new},\citep{hong2009extended}.
+The equation(\ref{2.8.1}) is first transformed into the ordinary differential equation (\ref{2.8.3}) just like in the $(G'/G)$ expansion method after which the  solutions $\nu(\varPhi) $ are assumed to be expressible in the form
+\begin{equation}
+ \nu(\varPhi) = \sum_{i=-\mathcal{M}}^{\mathcal{M}}A_i \mathcal{H}(\varPhi)^i  \label{2.8.6} 
+\end{equation} for some positive integer, $\mathcal{M}$ obtainable by the balancing procedure and \begin{equation} \mathcal{H}(\varPhi) = cn(\varPhi|\omega), \label{2.8.7}
+\end{equation} the cosine amplitude function satisfying the first order ordinary differential equation %%[28,32]
+\begin{equation} \mathcal{H}'(\varPhi) = - \sqrt{ \left(  1- \mathcal{H}^2(\varPhi) \right) \left( 1- \omega + \omega \mathcal{H}^2(\varPhi) \right)  }, \label{2.8.8}
+\end{equation} and the sine amplitude function \begin{equation}
+	\mathcal{H}(z) = sn( \varPhi|\omega) \label{2.8.9}
+\end{equation} satisfying the first order ordinary differential equation 
+\begin{equation}
+	\mathcal{H}'(\varPhi) = - \sqrt{ \left(  1- \mathcal{H}^2(\varPhi) \right) \left( 1-\omega \mathcal{H}^2(\varPhi) \right)  }, \label{2.8.10}
+\end{equation}
+\begin{rem} The value of $ \nu(\phi)$ from equation (\ref{2.8.6}) is then substituted into either of equations (\ref{2.8.8}) and (\ref{2.8.10}) to obtain a polynomial in powers of $ \mathcal{H}(\phi)$, again whose coefficients are separated resulting into an algebraic system of equations which are then solved for the values of $ A_i, \quad i = 0,\pm 1,\ldots,\pm \mathcal{M}$.
+\end{rem}
+\subsection{Kudryashov method}
+%%%  reference [9] ,[35,36] This method was introduced by 
+We  consider a non-linear partial differential equation of the form
+\begin{equation}
+E_{2}(u,u_{t}, u_{x}, u_{tt},u_{xx} \ldots) =0,  \label{2.8.11}
+\end{equation}
+The iterations involved in the algorithm are as follows  \citep{kudryashov2012one}.
+\begin{enumerate}[o]
+\item A substitution $u(t,x) = \nu(\varPhi), \quad \varPhi =  \tau x+\omega t$ for $\tau$ and $\omega$  constants transforms the equation (\ref{2.8.11}) to the ordinary differential equation
+\begin{equation} E_{1}(\nu,\omega \nu', \tau \nu',\omega^2\nu'', \tau^2 \nu'', \ldots) =0,  \label{2.8.13}
+\end{equation}
+\item Supposing that the exact solutions of equation (\ref{2.8.13}) is expressible as \begin{equation}
+\nu(\varPhi) = \sum_{ n=0}^{N} a_n \textit{Q}^n(\varPhi) \label{2.8.14}
+\end{equation} wherein $a_n$ are constants to be determined for $a_N \neq 0$, then $\textit{Q}(\varPhi)$ satisfies the first order non-linear ordinary differential equation \begin{equation}\textit{Q}_{\varPhi} ( \varPhi) =\textit{Q}^2(\varPhi) -\textit{Q}(\varPhi). \label{2.8.15}
+\end{equation}
+The solution of equation (\ref{2.8.15}) is given as \begin{equation}\textit{Q}(\varPhi) = \frac{1}{ 1 + e^{\varPhi}} \label{2.8.16}
+\end{equation}
+\item Then the value of $\nu(\varPhi)$ is substituted into equation (\ref{2.8.13})	 and equation (\ref{2.8.15}) used to generate an equation which involves the powers of $\textit{Q}$.
+\item Now equating the powers of $\textit{Q}$ to zero outputs the system of algebraic equation 
+\begin{equation}\mathcal{P}_n ( a_N,a_{N-1},\ldots,a_0,\tau,\omega , \ldots) =0, \quad n= 0, \ldots, N \label{2.8.17}
+\end{equation}
+\end{enumerate}
+\begin{rem} Last but not least, the solution of algebraic equations in (\ref{2.8.17}) gives values of the coefficients $a_0,\ldots,a_N$ alongside relations for parameters of equation (\ref{2.8.13}). Ultimately, exact solutions of equation (\ref{2.8.13})  expressed in the form in equation (\ref{2.8.14}) are obtained.
+\end{rem}
+\section{Conservation laws}
+This is the idea that a quantity of a physical system does not dissipate with  time evolution. We discuss  briskly fundamental operators, Noether's theorem and alternative techniques for  deriving  conservation laws for systems that do have admit a Lagrangian.
+\subsection{Fundamental operators and their relationship}
+Let a system of $\pi$th-order partial differential equations with $n$ independent variables and $ x= (x_1, \ldots, x^n)$  and  $m$ dependent variables $ u= ( u^1, \ldots, u^m ) $ be given by equation (  \ref{2.2.4}).
+\begin{defn} The Euler-Lagrange operator , for each $\alpha$ is defined by,
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0
+	\begin{equation}
+	\frac{ \delta}{ \delta u^{\alpha}} = \frac{ \partial }{ \partial  u^{\alpha}} + \sum_{\substack{  \kappa \geq 1}} (-1)^{\kappa} D_{   i_1}, \ldots, D_{   i_{\kappa}} \frac{ \partial }{ \partial u^{\alpha }_{ i_1i_2\ldots i_{\kappa }}},  \label{sec2.9.1}
+	\end{equation} and the  Lie- B\"acklund operator in abbreviated form  \citep{ibragimov} is  \begin{equation}
+		X =  \xi^i \frac{ \partial }{ \partial x^i} + \eta^{\alpha}   \frac{ \partial }{ \partial u^{\alpha }}+\ldots. \label{sec2.9.3}
+		\end{equation}  
+\end{defn}
+<<<<<<< HEAD
+\begin{rem}The Lie- B\"acklund operator  (\ref{sec2.9.3}) in its prolonged form is \begin{equation}
+	X =  \xi^i \frac{ \partial }{ \partial x^i} + \eta^{\alpha}   \frac{ \partial }{ \partial u^{\alpha }}+\sum_{\substack{ \kappa  \geq 1}} \zeta_{i_1\ldots i_{\kappa}} \frac{ \partial }{ \partial u^{\alpha }_{ i_1i_2\ldots i_\kappa}}, \label{sec2.9.4}
+	\end{equation} where  \begin{align}
+	\zeta_{i}^{\alpha} &= D_i(W^{\alpha})+ \xi^{j} u_{i j }^{\alpha}, \quad j=1,\ldots,n,\\
+	\vdots\\
+	\zeta_{i_1\ldots i_{\kappa}}^{\alpha}&= D_{i_1 \ldots i_{\kappa} } (W^{\alpha}) + \xi^{j} u_{ j i_1 \ldots i_{\kappa} }^{\alpha}, \,\,  \end{align}
+	and  the Lie characteristic function is \begin{align}	W^{\alpha} = \eta^{\alpha} -\xi^j u^{\alpha}_{j}. \label{sec2.9.5}
+\end{align} 
+\end{rem}
+\begin{rem} The characteristic form of Lie- B\"acklund operator (\ref{sec2.9.4}) is \begin{equation}
+	X =  \xi^i D_i  + W^{\alpha} \frac{ \partial }{ \partial u^{\alpha}}  +  D_{i_1 \ldots i_{\kappa} } (W^{\alpha})  \frac{ \partial }{ \partial u^{\alpha }_{ i_1i_2\ldots i_\kappa}}.  \label{sec2.9.6}
+=======
+
+\begin{defn} If there exits a function $ \mathcal{L} =\mathcal{L}( x, u , u_{(1)}, \ldots,u_{(s)} ),\quad s\leq \pi $ for $\pi$th-order of equation ( \ref{2.2.4}) such that the variational derivative of $\mathcal{L}$ vanishes, that is,
+	\begin{equation}
+	\frac{ \delta \mathcal{L}}{ \delta u^{\alpha}} =0, \alpha = 1, \ldots,m.  \label{2.9.2}
+	\end{equation} then $ \mathcal{L}$ is called a Lagrangian of equation (\ref{2.2.4}). The equation ( \ref{2.9.2}) is called the Euler-Lagrange equation.
+	
+\end{defn}
+
+\begin{defn}  The Lie- B\"acklund operator is given by \begin{equation}
+	X =  \xi^i \frac{ \partial }{ \partial x^i} + \eta^{\alpha}   \frac{ \partial }{ \partial u^{\alpha }}, \quad  \xi^i ,\eta^{\alpha} \in \mathcal{A} \label{2.9.3}
+	\end{equation} for some $ \mathcal{A} $ the space of differential functions \citep{ibragimov1999elementary}. 
+\end{defn}
+The operator  (\ref{2.9.3}) in its prolonged form is \begin{equation}
+X =  \xi^i \frac{ \partial }{ \partial x^i} + \eta^{\alpha}   \frac{ \partial }{ \partial u^{\alpha }}+\sum_{\substack{ \kappa  \geq 1}} \zeta_{i_1\ldots i_{\kappa}} \frac{ \partial }{ \partial u^{\alpha }_{ i_1i_2\ldots i_\kappa}}, \label{2.9.4}
+\end{equation} with the additional terms uniquely determined by the prolongation formulae \begin{align} \begin{aligned}
+\zeta_{i}^{\alpha} &= D_i(W^{\alpha})+ \xi^{\iota} u_{i \iota }^{\alpha}, \quad \iota=1,\ldots,n\\
+\vdots\\
+\zeta_{i_1\ldots i_{\kappa}}^{\alpha}&= D_{i_1 \ldots i_{\kappa} } (W^{\alpha}) + \xi^{\iota} u_{ \iota i_1 \ldots i_{\kappa} }^{\alpha}, \kappa >1,\quad \iota=1,\ldots,n,\quad
+ \alpha=1,\ldots,m.   
+\end{aligned} \label{2.9.5}
+\end{align}
+for which  $ W^{\alpha} = \eta^{\alpha} -\xi^j u^{\alpha}_{\iota}$ (\ref{2.9.5}) is the \textit{Lie characteristic function}. 
+The  Lie- B\"acklund operator (\ref{2.9.3})  can be written in characteristic form as \begin{equation}
+X =  \xi^i D_i  + W^{\alpha} \frac{ \partial }{ \partial u^{\alpha}}  +  D_{i_1 \ldots i_{\kappa} } (W^{\alpha})  \frac{ \partial }{ \partial u^{\alpha }_{ i_1i_2\ldots i_\kappa}}   \label{2.9.6}
+\end{equation} 
+\section*{Noether's theorem on conservation laws}
+\begin{defn} 
+	The  \textit{Noether operators} associated with a Lie-B\"acklund symmetry  operator  $X$ are given by \begin{equation} N^i = \xi^i + W^{\alpha} \frac{ \delta }{ \delta u_i^{\alpha}} + \sum_{\substack{ \kappa  \geq 1}} D_{i_1 \ldots i_{\kappa} } (W^{\alpha})  \frac{ \delta }{ \delta u^{\alpha }_{ i_1i_2\ldots i_\kappa}}, \quad i= 1, \ldots, n  \label{2.9.7}
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0
+	\end{equation}
+\end{rem}
+\subsection{The method of multipliers}
+\begin{defn}
+ A function    $  \Lambda^{\alpha} \left( x^i, u^{\alpha},u_{(1)}, \ldots \right) =\Lambda^{\alpha},$  is a multiplier of the PDE system given by (\ref{pi-thorderpde}) if it satisfies the condition that \citep{olver2000applications}
+\begin{equation}  \Lambda^{\alpha} \Delta_{\alpha} = D_iT^i, \label{sec2.9.13} 
+\end{equation} where $D_iT^i$ is a divergence expression. \label{def2.2.6}
+\end{defn}
+\begin{defn}	To find the multipliers $\Lambda^{\alpha}$, one solves the determining equations (\ref{sec2.9.14})  \citep{bluman2008symmetry}, \begin{equation} \frac{ \delta }{ \delta u^{\alpha}} ( \Lambda^{\alpha} \Delta_{\alpha} )=0. \label{sec2.9.14}
+\end{equation}
+<<<<<<< HEAD
+\end{defn}
+
+\subsection{Ibragimov's conservation theorem \label{ibra}}
+The technique \citep{ibragimov2007new}  enables one to construct conserved vectors associated with each  Lie point symmetry of the PDE system given by (\ref{pi-thorderpde}).
+ \begin{defn} The adjoint equations of the system given by (\ref{pi-thorderpde})  are  \begin{equation} \Delta_{\alpha}^{*}\left( x^i, u^{\alpha} , v^{\alpha}, \ldots,u_{(\pi)},v_{(\pi)} \right) \equiv   \frac{ \delta }{ \delta u^{\alpha }} ( v^{\beta} \Delta_{\beta})   =0, \label{sec2.9.15}
+	\end{equation} where  $ v^{\alpha}$ is the new dependent variable.
+=======
+
+The Lie-B\"acklund, Euler-Lagrange and Noether operators are  related by operator identity \citep{ibragimov1999elementary}\begin{equation} X + D_i( \xi^i) = W^{\alpha} \frac{ \delta }{ \delta u^{\alpha}} + D_i N^i,\quad  \quad i = 1, \ldots, n, \quad  \alpha = 1, \ldots,m. \label{2.9.9}
+\end{equation}
+
+\begin{defn} A lie B\"acklund operator $X$ of the form (\ref{2.9.3}) is called a\textit{ Noether symmetry} corresponding to  a Lagrangian $ \mathcal{L} \in \mathcal{A} $ if there exists a vector $ B^i = ( B^1, \ldots, B^n), B^i \in \mathcal{A}$ such that \begin{equation} X(\mathcal{L}) + \mathcal{L} D_i( \xi^i) = D_i(B^i) \label{2.9.10}
+	\end{equation} if $ B^i=0,\quad ( i = 1,\ldots,n)$, then $X$ is called a \textit{strict Noether symmetry }corresponding to a Lagrangian $ \mathcal{L} \in \mathcal{A}$.
+\end{defn}
+\begin{thm}  Every Noether symmetry generator $X$ associated to a given Lagrangian $ \mathcal{L} \in \mathcal{A}$  of ( \ref{2.2.4}) , has a  corresponding conserved vector $ T = ( T^1, \ldots, T^n), T^i \in \mathcal{A} $, given by 
+	\begin{equation}
+	T^i = N^i( \mathcal{L})-B^i, \quad i=1, \ldots, n, \label{0}
+	\end{equation} satisfying \begin{equation} D_i T^i|_{(\ref{2.2.4})}=0
+	\label{2.9.11}	\end{equation} where the equation (\ref{2.9.11}) defines a\textbf{ local conservation law} for the system (\ref{2.2.4}).
+\end{thm}
+\begin{rem}
+	In this Noether approach, the Lagrangian $\mathcal{L}$ is found and then equation (\ref{2.9.10}) is used to unleash Noether symmetries after which the equation (\ref{0}) will birth the corressponding Noether conserved vectors.
+\end{rem}
+\subsection{The multiplier method}
+% a book should be cited here.
+\cite{naz2012conservation}
+This technique reduces the calculation of conservation laws to just solving a system of linear determining equations analogous to that of calculating symmetries. It explores the possibility of bringing an equation into conservation law by multiplying by  a specific function,  $ \Delta^{\alpha} ( x, u,u_{(1)}, \ldots)$,  called a \textit{multiplier}, for which the following must be satisfied in case of the partial differential equation system (\ref{2.2.4})  (\cite{olver2000applications},\citep{bluman2010applications})
+\begin{equation}  \Delta^{\alpha} E_{\alpha} = D_iT^i \label{2.9.13}
+\end{equation} The $E_{\alpha}, D_i $ and $T^i $ are as defined in (\ref{2.2.4}), (\ref{2.2.2}) and (\ref{2.9.11}) respectively. The right hand side of (\ref{2.9.13}) is a divergence expression. To find the multipliers $\Delta^{\alpha}$, one invokes and solves the determining equations (\ref{2.9.14}) (\cite{bluman2008symmetry}) \begin{equation} \frac{ \delta }{ \delta u^{\alpha}} ( \Delta^{\alpha} E_{\alpha} )=0 \label{2.9.14}
+\end{equation}
+
+\subsection{Ibragimov's conservation theorem}
+This approach \citep{ibragimov2009practical}, enables one to derive a conservation law for each Lie point symmetry of the partial differential equation system.
+
+ \begin{defn}  Consider the partial differential equation system (\ref{2.2.4}). The adjoint equations of the system (\ref{2.2.4})  are defined by \begin{equation} E_{\alpha}^{*}( x, u , v, \ldots,u_{(\pi)},v_{(\pi)}) \equiv   \frac{ \delta }{ \delta u^{\alpha }} ( v^{\sigma } E_{\sigma})   =0, \label{2.9.15}
+	\end{equation} wherein  $ v= ( v^1, \ldots, v^m)$ is the new dependent variable.
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0
+\end{defn} 
+\begin{defn} Formal Lagrangian $ \mathcal{L}$ of the system (\ref{pi-thorderpde}) and its adjoint equations  (\ref{sec2.9.15}) is \citep{ibragimov2007new} \begin{equation} \mathcal{L} = v^{\alpha} \Delta_{\alpha } ( x^i,u^{\alpha},u_{(1)}, \ldots, u_{(\pi)}). \label{sec2.9.16}
+\end{equation}
+<<<<<<< HEAD
+\end{defn}
+\begin{thm} \label{conls} Every infinitesimal symmetry $
+X $of the system given by (\ref{pi-thorderpde}) leads to  conservation laws \citep{ibragimov2007new} \begin{equation}
+	D_iT^i\Big|_{\Delta_{\alpha =0 }} =0,  \label{sec2.9.18}
+	\end{equation} where the conserved vector \begin{align}  \begin{aligned}
+=======
+
+\begin{thm} \citep{ibragimov2009practical} Every infinitesimal symmetry $
+X $of the system (\ref{2.2.4}) leads to a a conservation law for the system ( \ref{2.2.4}) \begin{equation}
+	D_iT^i|_{E_{\alpha =0 }} =0  \label{2.9.18}
+	\end{equation}. The components of the conserved vector $ T^i$ are given by the formula \begin{align}  \begin{aligned}
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0
+	T^i = \xi^i \mathcal{L} +  W^{\alpha} \left[  \frac{ \partial \mathcal{L}}{ \partial u^{\alpha}_i} - D_j \left(\frac{ \partial \mathcal{L}}{ \partial u^{\alpha}_{ij}} \right) + D_jD_k \left(\frac{ \partial \mathcal{L}}{ \partial u^{\alpha}_{ijk}} \right)- \ldots    \right] + \\
+	D_j ( W^{\alpha} ) \left[ \frac{ \partial \mathcal{L}}{ \partial u^{\alpha}_{ij}} -D_k  \left(\frac{ \partial \mathcal{L}}{ \partial u^{\alpha}_{ijk}} \right)+ \ldots   \right] + 
+	D_jD_k ( W^{\alpha} ) \left[ \frac{ \partial \mathcal{L}}{ \partial u^{\alpha}_{ijk}} - \ldots   \right].\end{aligned}
+\end{align} 
+\end{thm}
+<<<<<<< HEAD
+\section{Concluding remarks}
+This chapter has introduced fundamental concepts of Lie group analysis of PDEs and conservation laws. We have defined local Lie groups, their generators, and infinitesimal transformations. We have also shown how one can obtain prolongations to a generator and prolonged groups. This is very key when solving determining equations for symmetries of a PDE. The ideas of group-invariants and characteristic equations will help to find group-invariant solutions.
+Also important to mention is the methods of obtaining conservation laws of PDEs. For this dissertation, we have considered only the method of multipliers and Ibragimov's conservation theorem.
+
+=======
+\section{Conclusions}
+In this chapter, we presented a succinct introduction to Lie group analysis and conservation laws of partial differential equations and gave some concrete results which will be used throughout this dissertation. We also touched on some algorithms of certain methods used to determine conservation laws. 
+>>>>>>> f3e458080f41e5290173f14b8121103bb6a456e0

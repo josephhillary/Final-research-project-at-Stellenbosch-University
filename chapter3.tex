@@ -1,0 +1,396 @@
+\chapter{Korteweg-de Vries (KdV)  Equation \label{ch3}}
+We introduced the concepts of Lie group analysis and conservation laws in Chapter \ref{ch2}, which we will rely on in this chapter. Our aim is to provide an illustrative example of Lie group analysis of a nonlinear partial differential equation (NLPDE). We find  Lie point symmetries of the KdV equation and use them for symmetry reductions and construction of invariant solutions. In addition, we use the multiplier method to get its conservation laws.
+\section{Introduction}
+A Scottish civil engineer, John Scott Russell is credited with first work on solitons \citep{wazwaz2010partial}. Russell observed that water waves maintained their shape and structure as they traveled in a canal. He went ahead to conduct experiments, which culminated in the discovery of solitons.
+In the year 1895, Diederik Korteweg and Gustav De Vries analytically derived the  KdV equation. However,  Joseph  Boussinesq had earlier (1877) introduced the equation in his work on water waves. The KdV equation has applications in aerodynamics, fluid dynamics, and continuum mechanics among other disciplines of mathematical sciences. The equation has been used to describe the dynamics of solitons, ion-acoustic waves in plasmas, surface waves in shallow water, and long internal waves in oceans. The KdV equation also models shock wave formation, turbulence, boundary layer behavior, and mass transport. The simplest form of the KdV equation is  given by \begin{equation}
+u_t + a uu_x + u_{xxx} =0.  \label{ew0}\end{equation} The KdV equation combines a quadratic nonlinear dissipative term $uu_x$ which localizes the wave and a linear dispersive term $u_{xxx}$ which spreads  out the wave. The physical meaning  of $u(t,x)$ is the local elevation of the wave surface  at time $t$ and position $x$. With the help of scaling, we associate any equation of the form
+\begin{equation}
+\alpha u_{t}+\beta u u_{x}+ \gamma u_{xxx}=0,
+\end{equation}
+to be of “KdV type”.  In this chapter, we use the  form
+\begin{equation}\label{kd}
+\Delta \equiv  u_{t}+6u u_{x}+ u_{xxx}=0,
+\end{equation} where the 6 factor is just conventional and of no great significance. Infact, most commonly used factors are $ \pm 1 , \pm 6.$
+\section{Solutions of the KdV Equation (\ref{kd})}
+\subsection{Lie point symmetries of \label{secv} (\ref{kd}) }
+
+We use  Lie's method to determine Lie point symmetries of the KdV equation. The  infinitesimal transformations of a local  Lie group with a parameter $\epsilon$ are 
+\begin{align}
+\begin{aligned}
+\bar{t}=t+  \tau(t,x,u)\epsilon,\,\,\bar{x}=x+  \xi(t,x,u)\epsilon, \,\,
+\bar{u}=u+  \eta(t,x,u)\epsilon.
+\label{infintlil} 
+\end{aligned}
+\end{align}
+The vector field
+\begin{eqnarray}\label{kdv1}
+X =\tau (t,x,u) \frac{\partial}{\partial t} + \xi (t,x, u) \frac{\partial}{\partial x} 
++\eta (t,x,u) \frac{\partial}{\partial u} , 
+\end{eqnarray}
+is a Lie point symmetry of  (\ref{kd}) provided that
+\begin{eqnarray}
+\mbox{X}^{[3]}  \Delta \Big|_{\Delta=0} =0 \label{eq},
+\end{eqnarray} where
+\begin{eqnarray}
+	\mbox{X}^{[3]} =X +\zeta_{1}\frac{\partial }{\partial u_{t}}+\zeta_{2}\frac{\partial }{\partial u_{x}}+\zeta_{222}\frac{\partial }{\partial u_{xxx}},
+\end{eqnarray} is the third prolongation of the Lie point symmetry $X$ as defined in  (\ref{sec2.4.3}) of Chapter \ref{ch2} and
+\begin{eqnarray}
+	\zeta_1 &=& D_t (\eta) - u_t D_t (\tau) - u_x D_t (\xi), \\
+	\zeta_2 &=& D_x (\eta) - u_t D_x (\tau) - u_x D_x (\xi),\\
+	\zeta_{22} &=& D_x(\zeta_2) - u_{tx}D_x(\tau) - u_{xx}D_x(\xi),\\
+	\zeta_{222} &=& D_x(\zeta_{22}) - u_{txx}D_x(\tau) - u_{xxx}D_x(\xi),
+\end{eqnarray} as defined in  (\ref{sec2.4.2}), and
+\begin{eqnarray}
+\label{f1} D_t &=& \frac{\partial}{\partial t} + u_t\frac{\partial}{\partial u}
++ u_{tx} \frac{\partial}{\partial u_x} + u_{tt}\frac{\partial}{\partial u_t} + \cdots \, , \\
+\label{f2} D_x &=& \frac{\partial}{\partial x} + u_x \frac{\partial}{\partial u} + u_{xx}\frac{\partial}
+{\partial u_x} + u_{tx} \frac{\partial}{\partial u_{t}} + \ldots .
+\end{eqnarray}
+Applying the definitions of $D_t$ and $D_x$ given in (\ref{f1}) and (\ref{f2}), we obtain the expanded form of the $\zeta_s$  as \vspace{0.005cm}
+\begin{align}  \begin{aligned}
+\zeta_1& = \eta_t + u_t\eta_u - u_t\tau_t - u_t^2\tau_u - u_x\xi_t - u_tu_x\xi_u,\\ 
+\zeta_2& = \eta_x + u_x \eta_u - u_t \tau_x - u_t u_x \tau_u - u_x\xi_x - u_x^2\xi_u,\\
+\zeta_{22}& = \,  \eta_{xx} + 2u_x \eta_{xu} + u_{xx} \eta_u + u_x^2 \eta_{uu} - 2u_{xx} \xi_x
+-u_x \xi_{xx} - 2u_x^2 \xi_{xu} - 3u_xu_{xx} \xi_u \\
+&
+- u_x^3 \xi_{uu}- 2u_{tx} \tau_x - u_t \tau_{xx}  - 2u_tu_x \tau_{xu} - (u_tu_{xx} + 2u_xu_{tx}) \tau_u - u_t u_x^2 \tau_{uu},\\
+\zeta_{222}&= \eta_{xxx}
+-3u_{t}u_xu_{t}u_{xx}\tau_{uu}+u_{x}^3\eta_{uuu}+3u_{x}^2\eta_{uux}-u_t\tau_{xxx}-3u^2_x\xi_{uux}-3u_{x}^3 \xi_{uux} \\
+&
+-u_{x}^4\xi_{uuu}-3u_{xx}^2 \xi_{u}+3u_{xx} \eta_{ux} +u_{xxx}\eta_u-3u_{txx}\tau_{x} -3u_{tx}\tau_{xx}-3u_{xxx} \xi_{x}\\
+&
+-3u_{xx}\xi_{xx}-3u_t u_{x}\tau_{uxx} -3u_t u_{xx} \tau_{ux}-6u_{tx} u_x \tau_{ux}+3u_{xx} u_x\eta_{uu}-3u_{tx}u_{x}^2 \tau_{uu} \\
+&
++3u_{x}\eta_{uxx}-u_{x}\xi_{xxx}-3u_{t} u_{x}^2\tau_{uux}-u_{t} u_{xxx}\tau_u -3u_{txx} u_x\tau_u-u_{t} u_{x}^3\tau_{uuu}\\
+&
+-4u_{xxx} u_x\xi_u-9 u_{x} u_{xx}\xi_{ux}-3u_{tx} u_{xx}\tau_u-6u_{x}^2 u_{xx}\xi_{uu}.
+\end{aligned}
+\end{align}
+From (\ref{eq}), we get
+\begin{align}
+\Big[\tau\frac{\partial}{\partial t} + \xi\frac{\partial}{\partial x}
++ \eta\frac{\partial}{\partial u} + \zeta_1\frac{\partial}{\partial u_t} + \zeta_2
+\frac{\partial}{\partial u_x} + \zeta_{222}\frac{\partial}{\partial u_{xxx}}\Big]\Big(u_{t}+6 uu_x+ u_{xxx}\Big)\Big|_{ (\label{kd1})} = 0.
+\end{align}
+After expanding   (\ref{kd1}), we obtain
+\begin{align} \label{6u}
+(6u_x \eta +\zeta_1 +6u \zeta_{2}+ \zeta_{222})\Big|_{u_{xxx}=-u_{t}-6 uu_x} = 0.
+\end{align}
+Substitutions of values of $\zeta_1$, $\zeta_2$ and $\zeta_{222}$ in   (\ref{6u}) yield
+\begin{align}\begin{aligned} \label{6x}
+& 
+6u_x\eta+ [\eta_t +u_t \eta_u -u_t\tau_u-u^2_t \tau_u-u_x \xi_t-u_tu_x \xi_u ] + 6u[\eta_x +  u_x \eta_u- u_t\tau_x- u_t u_x\tau_u\\
+&
+- u_x\xi_x - u^2_x\xi_u]+[\eta_{xxx}
+-3u_{t}u_xu_{t}u_{xx}\tau_{uu}+u_{x}^3\eta_{uuu}+3u_{x}^2\eta_{uux}-u_t\tau_{xxx}-3u^2_x\xi_{uux} \\
+&
+-3u_{x}^3 \xi_{uux}-u_{x}^4\xi_{uuu}-3u_{xx}^2 \xi_{u}+3u_{xx} \eta_{ux} +u_{xxx}\eta_u-3u_{txx}\tau_{x} -3u_{tx}\tau_{xx}-3u_{xxx} \xi_{x}\\
+&
+-3u_{xx}\xi_{xx}-3u_t u_{x}\tau_{uxx}-3u_t u_{xx} \tau_{ux}-6u_{tx} u_x \tau_{ux}+3u_{xx} u_x\eta_{uu}-3u_{tx}u_{x}^2 \tau_{uu} \\
+&
+-u_{x}\xi_{xxx}-3u_{t} u_{x}^2\tau_{uux}-u_{t} u_{xxx}\tau_u -3u_{txx} u_x\tau_u-u_{t} u_{x}^3\tau_{uuu}-4u_{xxx} u_x\xi_u-9 u_{x} u_{xx}\xi_{ux}\\
+&
+-3u_{tx} u_{xx}\tau_u-6u_{x}^2 u_{xx}\xi_{uu}] \Big|_{ u_{xxx}=-u_{t}-6 uu_x}  =0.\end{aligned}
+\end{align}
+Replacing  $u_{xxx}$ by $-u_{t}-6 uu_x $  in (\ref{6x}), we obtain
+\begin{align}\begin{aligned}
+&6u_x\eta+ [\eta_t +u_t \eta_u -u_t\tau_u-u^2_t \tau_u-u_x \xi_t-u_tu_x \xi_u ] + 6u[\eta_x +  u_x \eta_u- u_t\tau_x- u_t u_x\tau_u\\
+&
+- u_x\xi_x - u^2_x\xi_u]+[\eta_{xxx}
+-3u_{t}u_xu_{t}u_{xx}\tau_{uu}+u_{x}^3\eta_{uuu}+3u_{x}^2\eta_{uux}-u_t\tau_{xxx}-3u^2_x\xi_{uux} \\
+&
+-3u_{x}^3 \xi_{uux}-u_{x}^4\xi_{uuu}-3u_{xx}^2 \xi_{u}+3u_{xx} \eta_{ux} +(-u_{t}-6 uu_x)\eta_u-3u_{txx}\tau_{x} -3u_{tx}\tau_{xx}\\
+&
+-3(-u_{t}-6 uu_x) \xi_{x}-3u_{xx}\xi_{xx}-3u_t u_{x}\tau_{uxx} -3u_t u_{xx} \tau_{ux}-6u_{tx} u_x \tau_{ux}+3u_{xx} u_x\eta_{uu}\\ 
+&
+-3u_{tx}u_{x}^2 \tau_{uu}+3u_{x}\eta_{uxx}-u_{x}\xi_{xxx}-3u_{t} u_{x}^2\tau_{uux}-u_{t} (-u_{t}-6 uu_x)\tau_u -3u_{txx} u_x\tau_u \\
+&-u_{t} u_{x}^3\tau_{uuu}-4(-u_{t}-6 uu_x) u_x\xi_u-9 u_{x} u_{xx}\xi_{ux}-3u_{tx} u_{xx}\tau_u
+-6u_{x}^2 u_{xx}\xi_{uu}]=0. \label{6t}\end{aligned}
+\end{align}
+ Splitting  (\ref{6t}) on  derivatives of $u$ gives an overdetermined system of eight PDEs, namely
+\begin{eqnarray}
+\label{1}u_{txx} &:& \tau_x=0, \\
+\label{2}u_{tx} u_{xx} &:& \tau _u=0, \\
+\label{3}u_{xx}^2& :&\xi _u=0, \\
+\label{7}u_x u_{xx}& : &\eta_{uu}=0,\\
+\label{4}u_{xx} &: &\eta_{ux}-\xi_{xx} =0, \\
+\label{5}u_{t}& : &3\xi_x -\tau_{t} =0, \\
+\label{6}u_{x} &:& 6\eta + 12 u \xi_x - \xi_{t}+3 \eta_{uxx}-\xi_{xxx} =0,\\
+\label{8}\mbox{Rest} &:& \eta_{xxx}+6u\eta_{x}+\eta_{t}=0.
+\end{eqnarray}
+From (\ref{1}) and (\ref{2}), we have \begin{align} \label{pau}	\tau = \tau(t), \end{align} where  arbitrary function $\tau$ depends on $t$.
+Substituting the expression of $\tau$ given by (\ref{pau}) into (\ref{5}), and integrating thereafter with respect to $x$ while taking note of (\ref{3}), we have 
+  \begin{equation} \xi = \frac{\tau_t(t) }{3}x + a(t),\label{sec3.2.10}
+\end{equation} for some arbitrary function $a$ of $t$. 
+Using the expression  for $\xi$ given by (\ref{sec3.2.10}) in  (\ref{6}), we have 
+\begin{align}\eta = \frac{-2\tau_{t}(t) u}{3}+  \frac{\tau_{tt}(t) }{18}x +  \frac{a_t(t)}{6}. \label{bau}
+\end{align}
+The expressions for  $\xi$ and $\eta$ as given by  (\ref{sec3.2.10}) and  (\ref{bau}) respectively, 
+ admit (\ref{4}).  Substituting the expression of $\eta$ given by (\ref{bau}) in (\ref{8}) yields 
+\begin{align} \label{las}-\frac{\tau_{tt}(t) }{3}u + \frac{\tau_{ttt}(t) }{18}x + \frac{ a_{tt}(t)}{6} =0. 
+\end{align} 
+ If we split  (\ref{las}) on powers of $u$ and $x$, we obtain
+ \begin{eqnarray}
+\label{pau1} u&:& \tau_{tt}(t) =0,\\
+\label{pau2}  x &:& \tau_{ttt}(t) =0,\\
+\label{pau3} \mbox{rest}  &:& a_{tt}(t)=0.
+ \end{eqnarray}
+We observe that  (\ref{pau1}) satisfies  (\ref{pau2}). Integration of  (\ref{pau1}) and (\ref{pau3})  twice with respect to $t$ gives \begin{align}
+ \tau &= 3C_1t + C_2,\\
+ a(t)&= 6C_3 t + C_4.
+ \end{align}
+Finally, appropriate substitutions give 
+\begin{align}
+\label{111}  \tau =& 3C_1t + C_2, \\
+\label{121}  \xi = &C_1x + 6C_3t + C_4, \\
+\label{131} \eta = &- 2C_1u+C_3. 
+\end{align}
+The  calculations  prove that the KdV Equation (\ref{kd}) admits  a four-dimensional Lie algebra generated by
+\begin{align}
+ \label{sec3.2.22} X_1 = &\frac{ \partial}{ \partial x},\\
+\label{sec3.2.28} X_2 =& \frac{ \partial}{ \partial t},\\
+ \label{sec3.2.32} X_3 =& 6t\frac{ \partial}{ \partial x } + \frac{ \partial }{ \partial u},\\
+\label{sec3.2.35} X_4 =&3t \frac{ \partial }{ \partial t}+ x\frac{ \partial}{ \partial x}  - 2 u \frac{ \partial }{ \partial u}.
+\end{align}
+ \begin{rem}
+The first two symmetries represent space and time translations respectively  while the third represents Galilean boost and the fourth represents scaling symmetry.
+ \end{rem}
+ \subsection{Commutator table} The set of all solutions to the determining Equation (\ref{eq}) forms a Lie algebra.
+ In this subsection , we evaluate the commutation relations for the symmetry generators.  We use the definition of Lie bracket in  (\ref{sec2.7.2}). For example, we have that the commutator \begin{align}
+ \left[X_1, X_2\right] = \left( \frac{ \partial}{ \partial x} \frac{ \partial}{ \partial t}\right)- \left( \frac{ \partial}{ \partial t} \frac{ \partial}{ \partial x} \right) =0.
+ \end{align}
+  \begin{rem}
+  The remaining commutation  relations  are obtained similarly as displayed in Table   \ref{Tab:Tcr}. 
+ \begin{center}
+ 	\begin{tabular}{|c|c|c|c|c|} 
+ 		\hline 
+ 		$[X_i,X_j]$	& $ X_1$ & $ X_2$ & $ X_3$ & $ X_4$ \\ 
+ 		\hline 
+ 		$ X_1$ & 0 & 0 & 0 & $ X_1$ \\ 
+ 		\hline 
+ 		$ X_2$ & 0 & 0 & 6 $ X_1$ & 3$ X_2$ \\ 
+ 		\hline 
+ 		$ X_3$ & 0 & -6$ X_1$ & 0 & -2 $ X_3$  \\ 
+ 		\hline 
+ 		$ X_4$ & -$X_1$ & -3$ X_2$ & 2$ X_3$ & 0 \\ 
+ 		\hline 
+ 	\end{tabular}  \captionof{table}{\label{Tab:Tcr}A commutator table for the Lie algebra generated by the symmetries of the KdV Equation (\ref{kd}).}
+ \end{center}
+  \end{rem}
+\subsection{Local Lie groups of transformations}
+The corresponding one-parameter groups of transformations are determined by solving the Lie equations as given in Theorem (\ref{lieeqns}). Let $T_{\epsilon_i}$  be the group of transformations  for each $X_i, i =1,2,3,4. $   To obtain  $T_{\epsilon_1}$ from the infinitesimal generator $X_1$ (\ref{sec3.2.22}), one integrates the Lie equations
+\begin{align} \begin{aligned}
+\frac{\mathrm{d} \bar{t} }{ \mathrm{d} \epsilon_1 } = 0,\quad \bar{t}\Big |_{ \epsilon_1 =0} =t, \,\,
+\frac{ \mathrm{d} \bar{x}}{ \mathrm{d}\epsilon_1} =1,\,\, \bar{x}\Big |_{ \epsilon_1 =0} =x, \,\,
+\frac{ \mathrm{d} \bar{u}}{ \mathrm{d}\epsilon_1} = 0,\,\, \bar{u}\Big |_{ \epsilon_1 =0} =u.
+\label{lieeq3} \end{aligned}
+\end{align}
+Solving the  system (\ref{lieeq3}), one obtains
+\begin{align} T_{\epsilon_1} : \,\,\bar{t}=t,\,\,  \bar{x}=x + \epsilon_1,\,\, \bar{u} =u. \label{sec3.1.14}
+\end{align}
+The other three local Lie  groups are obtained similarly and are given by
+\begin{align} \begin{aligned}
+T_{\epsilon_2} &: \,\,  \bar{t} = t+\epsilon_2,\,\,  \bar{x}=x,\,\,  \bar{u}=u, \\
+T_{\epsilon_3} &:\,\,  \bar{t}=t, \,\, \bar{x}=x + 6\epsilon_3t,\,\,  \bar{u}=u+ \epsilon_3,\\
+T_{\epsilon_4} &:\,\,  \bar{t}=t e^{3 \epsilon_4}, \,\, \bar{x}=x e^{\epsilon_4},\,\, \bar{u} =ue^{-2\epsilon_4}.
+\label{sec3.1.15} 
+\end{aligned}
+\end{align}
+\begin{rem}
+ In Lie group analysis, one can obtain solutions of PDEs either by transforming known solutions by the one-parameter groups or constructing group-invariant invariant solutions. 
+\end{rem}
+\subsection{Transformation of known solutions}
+We show how to transform known solutions.
+By the criterion of invariance, if $ \bar{u} = \Gamma( \bar{t}, \bar{x})$ admits (\ref{kd}), then so does \begin{equation}
+\phi(t,x,u,\epsilon) = \Gamma ( \varphi_1(t,x,u,\epsilon) \varphi_2(t,x,u,\epsilon) ). \label{sec3.1.16}
+\end{equation}
+Using the Lie groups obtained in (\ref{sec3.1.14}) and (\ref{sec3.1.15}), one gets  the transformed solutions 
+\begin{align} \begin{aligned} 
+T_{\epsilon_1}:& u^{(1)} = \Gamma(t,x + \epsilon_1),\\
+T_{\epsilon_2}:& u^{(2)} = \Gamma(t + \epsilon_2,x),\\
+T_{\epsilon_3}: &u^{(3)} = \Gamma(t,x + 6 t\epsilon_3) - \epsilon_3,\\
+T_{\epsilon_4}: &u^{(4)} =e^{2 \epsilon_4} \Gamma(te^{3 \epsilon_4},x e^{\epsilon_4}).\\
+\label{sec3.1.17} \end{aligned}
+\end{align}
+ \subsection{Group-invariant solutions of (\ref{kd})}
+ We  compute the group-invariant solutions of the KdV Equation (\ref{kd}) under all its Lie point symmetries.
+ \begin{enumerate}[(i)]
+ \item \textbf{Space Translation-Invariant Solutions.} \newline
+ Consider the space translation operator 
+$ X_1 = \partial/ \partial x.$  The  characteristic equations defined in (\ref{sec2.6.4}) of Chapter \ref{ch2} for  the operator (\ref{sec3.2.22}) are \begin{equation} \frac{ \mathrm{d} t }{0 } = \frac{ \mathrm{d} x }{1 } = \frac{ \mathrm{d} u }{0 }, \label{sec3.2.23}
+ \end{equation} which gives two invariants $ J_1 =t$ and $ J_2 = u$. Therefore, $J_2 = \psi(J_1) $  is the group-invariant solution for some arbitrary function $ \psi$. Substitution of $u=\psi(t)$ into (\ref{kd}) yields $
+ \psi'(t) =0,$  whose solution is $ \psi(t) = C_1,$  for  some arbitrary constant $C_1$. Hence the space translation-invariant solution of (\ref{kd})  is \begin{equation}
+u(t,x) = C_1. \label{sec3.2.27}
+ \end{equation}
+\item \textbf{Time translation-invariant (Stationary) solutions.} \newline
+ Consider the time translation operator $X_2 =  \partial / \partial t .$  The Lagrangian system associated with the operator (\ref{sec3.2.28}) yields the invariants  $J_1 = x$ and $ J_2 = u$. 
+Thus, $ u = \psi(x)$ is the group-invariant solution.
+Substituting of $u= \psi(x)$ into (\ref{kd}) yields \begin{equation} 6 \psi'(x) \psi(x) + \psi'''(x)=0. \label{ssol}
+\end{equation} All the stationary solutions have the form $ u =  \psi(x)$
+ for some arbitrary function $ \psi$  satisfying (\ref{ssol}) or 
+ \begin{equation}
+(\psi')^2 = -2 \psi^3 + 2k \psi +l, \label{psi}
+\end{equation} obtained from (\ref{ssol}) by two integrations, for which $ k $ and $l$ are constants of integration.\newline The general invariant solution takes the form \citep*{ibragimov1995crc} \begin{equation}
+u = -2 \Phi(x),  \label{ssta}
+\end{equation} where $\Phi(x)$ is the Weierstrass elliptic function satisfying \begin{equation}  \Phi(x)'^2 = 4  \Phi(x)^3 -g_2 \Phi(x)-g_3. \label{secwes}
+\end{equation} For some real roots $r_1, r_2 ,r_3$, of the cubic polynomial on the right-hand side of (\ref{psi}), the solutions (\ref{ssta}) could be rewritten in the following forms: \citep{ibragimov1995crc}
+\begin{enumerate}[(a)]
+	\item If $r_1 <r_2 <r_3$, then $ u = u(x)$, is a limited function and \begin{equation}\label{sba} u = \frac{2a}{s^2} \mathrm{dn^2} \left( \sqrt{ \frac{a}{s^2}}x,s\right)+ \gamma,
+	\end{equation} is a cnoidal wave where $\mathrm{dn^2}$(x,s) is the Jacobian elliptic function with modulus \newline$ s = \sqrt{ \frac{r_3-r_2}{  r_3-r_1} },$ where $
+	 a=\frac{r_3-r_2}{2}$ is the amplitude of a wave, and $ \gamma=r_1$ .
+	\item If $ r_1 = r_2 < r_3, $ then $ u \to r_1, u', u'' \to 0$ when $ |x| \to \infty$   \begin{equation} u = (r_3-r_1) \sech^2 \left( \sqrt{ \frac{r_3-r_1}{2}}\right)+ r_1,
+	\end{equation} is a  solitary wave.
+	\item If $ r_1 = r_2 =r_3$, then 
+	\begin{equation} u = -\frac{2}{ (x-c)^2},\quad  x\neq c.
+	\end{equation}
+\end{enumerate}
+\item \textbf{Galilean-invariant solutions.} \newline
+ Consider the Galilean boost operator $ X_3 = 6t  \partial / \partial x + \partial / \partial u. $
+  The characteristic equations associated to the operator (\ref{sec3.2.32}) yield two invariants $ J_1 = t$ and  $J_2 = -u+x/(6t)$. As a result, the group-invariant solution of (\ref{kd}) for this case is $ J_2 = \phi(J_1)$, for $\phi$ an arbitrary function. That is, \begin{equation} u(t,x) =-\phi(t)+ \frac{x}{6t}, \quad t\neq 0. \label{sec3.2.33}
+\end{equation}
+Substitution of the expression for $u$ from  (\ref{sec3.2.33}) into  (\ref{kd}) yields a first order ordinary DE $ \phi'(t) +  \phi(t)/t=0,$ whose general solution is  $\phi(t) =  \delta/ t $ for  an arbitrary constant $\delta$. Hence, we have a group-invariant solution for $X_3$ as  \begin{equation} u(t,x) =   \frac{ x+ \mathcal{C}}{6t} , \label{sec3.2.34}
+\end{equation}  where $ \mathcal{C}=-6\delta$ and $t \neq 0.$
+\item \textbf{Scale-invariant solutions}.\newline
+Last but not least, we consider the scaling operator $
+X_4 = x \partial /\partial x + 3t \partial / \partial t -2u  \partial/ \partial u,$  whose associated Lagrangian equations yield two invariants, $J_1 = x^3/t$ and $J_2 = ux^2$. Thus, 
+ \begin{equation} u = x^{-2}  \varphi(\lambda) , \quad \lambda=\frac{x^3}{t},  \label{ssol1} \quad  t \neq 0,
+\end{equation} is the group-invariant solution under $X_4$ where  $\varphi$  satisfies  
+\begin{eqnarray}\label{17}
+27\lambda^3 \varphi'''	+18\lambda \varphi \varphi'+(24 - \lambda) \lambda \varphi' -12(2 + \varphi)\varphi =0.
+\end{eqnarray}
+\end{enumerate}
+\subsection{Travelling wave solution} 
+To obtain travelling wave solution, in particular a soliton solution of the KdV equation, we consider a linear combination of the space and time translation symmetries, namely,  $ X = c {\partial }/{\partial x} +  {\partial }/{\partial t}$ for some arbitrary constant $c$ considered as the velocity of the wave.
+The characteristic equations give  two invariants, $ J_1 = u$ and $ J_2 = x -ct$.  So  $ u(t,x) = \varphi(x-ct)$, for some arbitrary function  $\varphi$,  is the invariant solution.
+Substitution of $u$ into (\ref{kd}) yields a third-order ordinary DE 
+\begin{equation} 
+-c\varphi'(\xi)+ 6 \varphi (\xi)\varphi' (\xi)+ \varphi'''(\xi) = 0, \,\,\, \xi = x-ct. \label{sec3.2.40}
+\end{equation}
+Integrating  (\ref{sec3.2.40}) with respect to $\xi$ yields \begin{equation}  
+-c\varphi (\xi)+ 3 \varphi^2 (\xi)+ \varphi''(\xi) = 0 \label{sec3.2.41}, 
+\end{equation} 
+where we have chosen  $0$ as the constant of integration. The second integration is done after multiplying  (\ref{sec3.2.41}) by $ 2 \varphi'$ and we get 
+\begin{align} 
+(\varphi')^2 = c \varphi^2- 2 \varphi^3 \quad  \text{ or}  \quad \frac{ \mathrm{d} \varphi}{ \sqrt{ c \varphi^2- 2 \varphi^3  } } = \mathrm{d} \xi. \label{oti}
+\end{align} 
+In the second integration, again we took the constant of integration to be $0$. By the change of variable $ \varphi =({c}/{2}) \sech^2( \eta)$ and integration of (\ref{oti}), we get the one-soliton solution 
+\begin{equation}
+u(x,t) = \frac{c}{2} \sech^2\left( \frac{ \sqrt{c}}{2}(x-ct)\right).
+\end{equation}
+\section{Conservation laws of the KdV Equation (\ref{kd})}
+Computation of conservation laws for KdV equation  (\ref{kd}) is done by  the using the  method of multipliers \citep{olver2000applications}. 
+\subsection{Conservation Laws of the KdV Equation (\ref{kd}) using multipliers \label{consl}}
+Using  the Euler-Lagrange operator defined  in (\ref{sec2.9.1}), we   search for a zeroth order multiplier \newline $\Lambda(t,x,u)= \Lambda $. The  determining equation for computing $ \Lambda$ is \begin{equation}
+\frac{ \delta}{ \delta u} \left[ \Lambda \{  u_t + 6 u u_x + u_{xxx}  \}\right] =0. \label{d}
+\end{equation}
+Expansion of  (\ref{d}) yields 
+\begin{equation}
+\Lambda_u ( u_t + 6 u u_x + u_{xxx} ) + 6 u_x \Lambda-D_t (\Lambda)-6D_x(\Lambda u)-D_x^3(\Lambda)=0. \label{sec3.3.2}
+\end{equation}
+Invoking the total derivatives defined in (\ref{f1}) and (\ref{f2}) on  (\ref{sec3.3.2}), we get
+\begin{align}
+\Lambda_t + 6 u \Lambda_x + \Lambda_{xxx}+ 3\Lambda_{xxu} u_x +  3 \Lambda_{xuu}   u_x^2 
++ \Lambda_{uuu} u_x^3 + 3 \Lambda_{xu} u_{xx} +  3 \Lambda_{uu}  u_x u_{xx}=0. \label{sec3.3.3} \end{align}
+Splitting (\ref{sec3.3.3}) on derivatives of $u$ produces a simplified system of 3 PDEs, namely,
+\begin{align}
+u_{xx} &: \Lambda_{xu}=0, \label{sec3.3.7} \\
+u_x u_{xx}&: \Lambda_{uu}=0, \label{sec3.3.8}\\
+rest&:\Lambda_t + 6 u \Lambda_x + \Lambda_{xxx}=0. \label{sec3.3.9}
+\end{align}
+Integrating (\ref{sec3.3.8})  with respect to $u$ twice gives \begin{equation} \Lambda =  \mathfrak{a}(t,x)u + \mathfrak{b}(t,x),  \label{sec3.3.10} \end{equation}
+ for some arbitrary functions $\mathfrak{a}$  and  $\mathfrak{b}$ of  $t$ and $x$.
+ Substitution of the value of $\Lambda$ from  (\ref{sec3.3.10})  into  (\ref{sec3.3.7}) yields, \begin{equation}  \mathfrak{a}_x(t,x) =0, \label{aq}
+	 \end{equation} from which we get that   $\mathfrak{a}= \mathfrak{a}(t)$, and consequently \begin{equation}
+	 \Lambda =  \mathfrak{a}(t)u + \mathfrak{b}(t,x). \label{sec3.3.11}
+	 \end{equation}
+	 If we substitute  the expression for $\Lambda$ given in   (\ref{sec3.3.11}) into  (\ref{sec3.3.9}), we obtain \begin{equation} \mathfrak{a}_t(t) u + \mathfrak{b}_t(t,x) + 6 u\mathfrak{b}_x(t,x)+ \mathfrak{b}_{xxx}(t,x) =0. \label{sec3.3.12}
+\end{equation} 
+ Splitting  (\ref{sec3.3.12}) on powers of $u$, we find	
+\begin{eqnarray}
+\label{sec3.3.13}u &:& \mathfrak{a}_t(t)+ 6 \mathfrak{b}_x(t,x)=0, \\
+\label{sec3.3.14}u^0 &:&  \mathfrak{b}_t(t,x)+ \mathfrak{b}_{xxx}(t,x) =0.
+\end{eqnarray}	
+Equation (\ref{sec3.3.13})  implies that 	\begin{equation}
+\mathfrak{b}_x(t,x)= -\frac{ \mathfrak{a}_t(t) }{6} , \label{sec3.3.15}
+\end{equation} from which $ \mathfrak{b}_{xxx}(t,x)=0.$ Thus, by  (\ref{sec3.3.14}), we deduce that $ \mathfrak{b}_t(t,x)=0$, meaning  that 
+$\mathfrak{b}=\mathfrak{b}(x).$
+\ Upon integration of (\ref{sec3.3.15}) with respect to $x$, we have that 
+\begin{equation}
+	\mathfrak{b}(x)=-\frac{ \mathfrak{a}_t(t) }{6} x+ C_1,   \label{sec3.3.17}
+\end{equation} for some arbitrary constant $C_1$. Since
+  $\mathfrak{a}=\mathfrak{a}(t)$ as shown by  (\ref{aq}), we must have that  $\mathfrak{a}_t(t)=C_2 $ for some arbitrary constant $C_2$.
+ This gives $ \mathfrak{a}(t)=C_2 t + C_3$ and $	\mathfrak{b}(x)= C_1-C_2x/6  $  for an  arbitrary constant $C_3$.
+Hence  we have, \begin{equation} \Lambda = C_1 +C_2\left( tu-\frac{x }{6} \right) + C_3 u,
+\end{equation} which means we have  three non-trivial conservation law multipliers, namely,\begin{align}
+ \Lambda_1 = 1, \quad 
+\Lambda_2= tu-\frac{1 }{6}x \quad \text{and} \quad \Lambda_3 = u.	
+\end{align} 
+\begin{rem} Recall from (\ref{sec2.9.13}) that
+a multiplier  $\Lambda $ for  (\ref{kd}) has the property that   for  the density $ T^t = T^t(t,x,u,u_x) \quad \text{and flux}  \quad  T^x = T^x(t,x,u,u_x,u_{xx}),$  \begin{equation} \Lambda \left( u_t + 6uu_x + u_{xxx}\right) = D_t T^t + D_x T^x \label{sec3.3.20}.
+\end{equation} 
+\end{rem} We look for  conserved vectors corresponding to each of the three multipliers obtained.
+\begin{enumerate}[(a)]
+\item \textbf{Conserved vectors for the multiplier  $\Lambda_1= 1.$}
+	Expansion of  (\ref{sec3.3.20})  gives,
+	\begin{equation}   u_t + 6uu_x + u_{xxx} = T_t^t + u_t T^t_u + u_{tx} T^t_{u_x} + T^x_x+ u_x T^x_u + u_{xx} T^x_{u_x}  + u_{xxx} T^x_{u_{xx}}.  
+	\label{j2}
+	\end{equation}
+	Splitting  (\ref{j2})  on third derivatives of $u$ yields;
+	\begin{eqnarray}
+	\label{j3} u_{xxx} &:&T^x_{u_{xx}}=1, \\
+	\label{j5} \text{Rest} &:& u_{t}+6 u u_{x}= T^t_t+ u_tT^t_u+u_{tx}T^t_{u_x}+T^x_x+u_xT^x_u  +u_{xx}T^x_{u_x}.
+	\end{eqnarray}	
+	By integrating (\ref{j3})  with respect to $u_{xx}$, we deduce that
+	\begin{align}
+	T^x=u_{xx}+A(t,x,u,u_x), \label{k4}
+	\end{align}  for some arbitrary function  $A$. Substituting the expression of $T^x$ from  (\ref{k4}) into  (\ref{j5}), we have \begin{align}
+	u_{t}+6 u u_{x}= T^t_t+u_{t} T^t_u +u_{tx}T^t_{u_x}+A_x+u_xA_u  +u_{xx}A_{u_x}. \label{mbilia}
+	\end{align}
+Equation (\ref{mbilia})	 splits on second derivatives of $u$ to give;
+	\begin{eqnarray}
+	\label{fe61} u_{tx} &:&T^t_{u_{x}}=0, \\
+	\label{fe31} u_{xx} &:&A_{u_{x}}=0, \\
+	\label{fe51} \text{Rest} &:&u_t+ 6 uu_x=T^t_t+u_tT^t_u +A_x +u_{x}A_u .
+	\end{eqnarray}
+Integrating  (\ref{fe61}) and (\ref{fe31}) with respect to $u_x$	manifests that \begin{align} \label{z1}T^t&=B(t,x,u),\\
+\label{z2} A& =A(t,x,u),
+\end{align} where $B$ is an arbitrary function of its arguments. Substituting the expressions of $T^t$ and $A$ from (\ref{z1})  and (\ref{z2}) respectively, into  (\ref{fe51}) gives \begin{align}\label{jkay1}
+	u_t+ 6 uu_x=B_t+u_tB_u +A_x +u_{x}A_u ,
+	\end{align}
+	which splits on  the derivatives of $u$ to yield
+	\begin{eqnarray}
+	\label{fe71} u_{t} &:&B_u=1 , \\
+	\label{f771} u_{x} &:&A_u= 6 u, \\
+	\label{fe81} \text{Rest} &:& A_x+B_t =0.
+	\end{eqnarray} 
+By integrating   (\ref{fe71}) and (\ref{f771}) with respect to $u$, we find that \begin{align}
+ B&=u+C(t,x),\\
+ 	A&=3 u^2+D(t,x)
+	\end{align}  where $C$ and $D$ are arbitrary functions of their arguments.	Substitution of the expressions of $A$ and $B$ into  (\ref{fe81}) shows  that $D_x+C_t=0$. Since $C$ and $D$ contribute to the trivial part of the  conservation law, we  take $C=D=0$. We get the conserved vector for the multiplier $ \Lambda_1= 1$ as \begin{align}
+	 T_1^t= u,\quad  T_1^x=3u^2 + u_{xx}.
+	 \end{align}	
+\begin{rem}
+	Similarly for the multipliers $ \Lambda_{2}$ and $ \Lambda_{3}$, we get the following conserved vectors.
+\end{rem}
+	\item \textbf{Conserved vector for the multiplier} 	$\Lambda_2 =  tu-x /6$ is given by
+ \begin{align}
+ T_2^t=  \frac{1 }{2}tu^2-\frac{1}{6}xu, \quad 
+ T_2^x=2 u^3t-\frac{1}{2} xu^2+ \frac{1}{6}u_x-\frac{1}{2}tu_x^2+ \left(tu-\frac{x }{6} \right)  u_{xx}.
+ \end{align}
+ 
+	\item \textbf{Conserved vector  for the \label{sec2} multiplier $\Lambda_3=  u$} is given by
+ \begin{align}
+T_3^t=\frac{u^2}{2},\quad 
+T_3^x= 2 u^3+ u u_{xx}-\frac{1}{2} u_{x}^2.
+\end{align}		
+\end{enumerate}
+\begin{rem}
+It can be verified that\begin{align}D_t T^t_i + D_xT^x_i \Big|_{\Delta =0}=0, \label{dan}
+\end{align} for $i =1,2,3$. \end{rem}
+\begin{rem} The expressions in (\ref{dan}) are conservation laws for the mass, energy and  momentum  for  the KdV Equation (\ref{kd}).
+\end{rem}
+\begin{rem} The presence of multiplier   $\Lambda_1=1$ shows that the KdV 
+	Equation (\ref{kd}) is itself a conservation law.
+\end{rem}
+\section{Concluding remarks}
+In this chapter, we gave an illustrative example of Lie group analysis of a nonlinear PDE, namely the KdV Equation (\ref{kd}). We achieved that by first constructing time and space translations, Galilean boosts, and scaling symmetry. These symmetries have been used to reduce the KdV equation, a process which led to group-invariant solutions, including a soliton solution of (\ref{kd}). All the solutions found describe different states of the system. Finally, conservation laws for mass, momentum, and energy were obtained using the multiplier approach.    That means those quantities are invariant in the evolution of the KdV system. The approach illustrated in this chapter will be very important for studying the nonlinear system of coupled KdV equations in Chapter \ref{ch4}.

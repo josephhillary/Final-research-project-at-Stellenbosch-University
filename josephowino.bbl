@@ -1,0 +1,114 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arrigo(2015)]{arrigo2015symmetry}
+Arrigo, D.~J.
+\newblock \emph{Symmetry analysis of differential equations: an introduction}.
+\newblock John Wiley \& Sons, 2015.
+
+\bibitem[Bluman and Anco(2008)]{bluman2008symmetry}
+Bluman, G. and Anco, S.
+\newblock \emph{Symmetry and integration methods for differential equations},
+  volume 154.
+\newblock Springer Science \& Business Media, 2008.
+
+\bibitem[Bluman and Kumei(1989)]{bluman2013symmetries}
+Bluman, G.~W. and Kumei, S.
+\newblock \emph{Symmetries and differential equations}, volume~81.
+\newblock Springer Science \& Business Media, 1989.
+
+\bibitem[Bluman et~al.(2010)Bluman, Cheviakov, and
+  Anco]{bluman2010applications}
+Bluman, G.~W., Cheviakov, A.~F., and Anco, S.~C.
+\newblock \emph{Applications of symmetry methods to partial differential
+  equations}, volume 168.
+\newblock Springer, 2010.
+
+\bibitem[Ibragimov(1999)]{ibragimov}
+Ibragimov, N.
+\newblock \emph{Elementary Lie group analysis and ordinary differential
+  equations}.
+\newblock Wiley, 1999.
+
+\bibitem[Ibragimov(1994)]{ibragimov1995crc}
+Ibragimov, N.~H.
+\newblock \emph{CRC handbook of Lie group analysis of differential equations},
+  volume 1-3.
+\newblock CRC press, 1994.
+
+\bibitem[Ibragimov(2006-2009)]{ibragimov2009selected}
+Ibragimov, N.~H.
+\newblock \emph{Selected works. Volume 1-4}.
+\newblock ALGA publications, Blekinge Institute of Technology, 2006-2009.
+
+\bibitem[Ibragimov(2007)]{ibragimov2007new}
+Ibragimov, N.~H.
+\newblock A new conservation theorem.
+\newblock \emph{Journal of Mathematical Analysis and Applications},
+  333\penalty0 (1):\penalty0 311--328, 2007.
+
+\bibitem[Ibragimov(2009)]{ibragimov2009practical}
+Ibragimov, N.~H.
+\newblock \emph{A Practical Course in Differential Equations and Mathematical
+  Modelling: Classical and New Methods. Nonlinear Mathematical Models. Symmetry
+  and Invariance Principles}.
+\newblock World Scientific Publishing Company, 2009.
+
+\bibitem[Khalique and Abdallah(2020)]{khalique2020coupled}
+Khalique, C.~M. and Abdallah, S.~A.
+\newblock Coupled {B}urgers equations governing polydispersive sedimentation; a
+  lie symmetry approach.
+\newblock \emph{Results in Physics}, 16, 2020.
+
+\bibitem[LeVeque(1992)]{leveque1992numerical}
+LeVeque, R.~J.
+\newblock \emph{Numerical methods for conservation laws}, volume~3.
+\newblock Springer, 1992.
+
+\bibitem[Lie(1891)]{lie1891vorlesungen}
+Lie, S.
+\newblock \emph{Vorlesungen {\"u}ber Differentialgleichungen mit bekannten
+  infinitesimalen Transformationen}.
+\newblock BG Teubner, 1891.
+
+\bibitem[Mhlanga and Khalique(2017)]{mhlanga2017travelling}
+Mhlanga, I. and Khalique, C.
+\newblock Travelling wave solutions and conservation laws of the {K}orteweg-de
+  {V}ries-{B}urgers {E}quation with {P}ower {L}aw {N}onlinearity.
+\newblock \emph{Malaysian Journal of Mathematical Sciences}, 11:\penalty0 1--8,
+  2017.
+
+\bibitem[Noether(1918)]{noether1918konig}
+Noether, E.
+\newblock Invariant variations problem. {N}achr. {K}onig. {G}issel. {W}issen,
+  {G}ottingen.
+\newblock \emph{Math. Phys. Kl}, pages 235--257, 1918.
+
+\bibitem[Olver(1993)]{olver2000applications}
+Olver, P.~J.
+\newblock \emph{Applications of Lie groups to differential equations}, volume
+  107.
+\newblock Springer Science \& Business Media, 1993.
+
+\bibitem[Ovsyannikov(2013)]{ovsyannikov2013lectures}
+Ovsyannikov, L.
+\newblock \emph{Lectures on the theory of group properties of differential
+  equations}.
+\newblock World Scientific Publishing Company, 2013.
+
+\bibitem[P.E(2000)]{hydon2000symmetry}
+P.E, H.
+\newblock \emph{Symmetry methods for differential equations: a beginner's
+  guide}, volume~22.
+\newblock Cambridge University Press, 2000.
+
+\bibitem[Wazwaz(2010)]{wazwaz2010partial}
+Wazwaz, A.-M.
+\newblock \emph{Partial differential equations and solitary waves theory}.
+\newblock Springer Science \& Business Media, 2010.
+
+\end{thebibliography}
